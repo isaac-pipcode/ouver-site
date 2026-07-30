@@ -1,0 +1,86 @@
+---
+// Tradução Audiovisual Acessível — macroárea Acessibilidade (core).
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+---
+<Base titulo="Tradução Audiovisual Acessível — Ouver" descricao="Audiodescrição, Libras e legendagem para filmes, séries, quadrinhos, festivais e mostras. Consultoria em acessibilidade audiovisual.">
+  <Hero
+    titulo="Tradução Audiovisual Acessível"
+    subtitulo="Sua obra já existe e precisa ser acessível? Tornamos filmes, séries, eventos e conteúdos acessíveis a pessoas com deficiência visual e auditiva — com rigor técnico, sensibilidade estética e compromisso com a inclusão."
+    ctas={[
+      { rotulo: 'Solicitar orçamento', href: '/orcamento', primario: true },
+    ]}
+  />
+
+  <section aria-labelledby="modalidades">
+    <h2 id="modalidades">Modalidades técnicas</h2>
+    <div class="grade-servicos">
+      <article class="card-servico">
+        <h3>Audiodescrição (AD)</h3>
+        <p>Narração descritiva que traduz imagens em palavras — cenas, expressões, figurinos, movimentos — para que pessoas com deficiência visual possam acompanhar obras audiovisuais, espetáculos e eventos ao vivo.</p>
+      </article>
+      <article class="card-servico">
+        <h3>Libras (Janela de Interpretação)</h3>
+        <p>Tradução do conteúdo audiovisual para a Língua Brasileira de Sinais, garantindo acesso a pessoas surdas que se comunicam prioritariamente em Libras.</p>
+      </article>
+      <article class="card-servico">
+        <h3>LSE — Legendagem para Surdos e Ensurdecidos</h3>
+        <p>Legendas que não apenas transcrevem as falas, mas também identificam falantes, efeitos sonoros, trilha musical e tom da voz — garantindo que pessoas surdas ou com deficiência auditiva tenham acesso a todas as informações sonoras da obra.</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="contextos">
+    <h2 id="contextos">Contextos de aplicação</h2>
+    <ul class="lista-contextos">
+      <li><strong>Filmes e séries</strong> — distribuição, festivais, plataformas de streaming</li>
+      <li><strong>Quadrinhos e publicações</strong> — audiodescrição de imagens estáticas, adaptação tátil</li>
+      <li><strong>Festivais e mostras</strong> — acessibilidade em eventos ao vivo e presenciais</li>
+      <li><strong>Eventos corporativos</strong> — palestras, lançamentos, conteúdo institucional</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="consultoria">
+    <h2 id="consultoria">Consultoria</h2>
+    <p>Além da execução, a Ouver oferece consultoria em acessibilidade audiovisual: análise de obras, elaboração de políticas de acessibilidade, capacitação de equipes e adequação de processos de produção para incorporar acessibilidade desde a concepção.</p>
+  </section>
+
+  <section class="secao-conversao" aria-labelledby="conv-tava">
+    <h2 id="conv-tava">Vamos tornar sua obra acessível?</h2>
+    <p>Conte sobre seu projeto e receba um orçamento claro, sem compromisso.</p>
+    <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
+  </section>
+</Base>
+
+<style>
+  .grade-servicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 2rem;
+  }
+  .card-servico {
+    background: var(--cor-branco);
+    padding: 1.5rem;
+    border-radius: var(--raio);
+    border-top: 4px solid var(--cor-terra);
+  }
+  .card-servico h3 { margin: 0 0 0.75rem; }
+  .lista-contextos {
+    display: grid;
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+  }
+  .lista-contextos li {
+    padding: 1rem;
+    background: var(--cor-branco);
+    border-radius: var(--raio);
+  }
+  .secao-conversao {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    background: var(--cor-branco);
+    border-radius: var(--raio);
+  }
+</style>

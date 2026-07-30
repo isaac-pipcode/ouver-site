@@ -1,0 +1,136 @@
+/* ============================================================
+   Ouver — estilos globais e design tokens
+   Acessibilidade é requisito, não enfeite. Ver README seção "Acessibilidade".
+   ============================================================ */
+
+:root {
+  /* Cores de marca — confirmar/atualizar após o redesenho da logomarca */
+  --cor-navy: #1B2230;     /* texto principal, elementos escuros */
+  --cor-terra: #B85F3E;    /* acento — NÃO usar como texto sobre fundo claro (contraste insuficiente) */
+  --cor-paper: #FAF8F3;    /* fundo claro */
+  --cor-branco: #FFFFFF;
+
+  /* Cores derivadas para garantir contraste — ajustar conforme paleta final */
+  --cor-terra-escuro: #8F4527; /* versão de terra com contraste suficiente para texto/links sobre fundo claro */
+
+  /* Tipografia */
+  --fonte-base: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --tamanho-base: 1.125rem; /* 18px — corpo de texto confortável para leitura */
+  --altura-linha: 1.6;
+
+  /* Espaçamento */
+  --espaco-secao: 4rem;
+  --largura-maxima: 70rem;
+  --raio: 0.5rem;
+}
+
+/* Reset mínimo */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+
+html { font-size: 100%; }
+
+body {
+  font-family: var(--fonte-base);
+  font-size: var(--tamanho-base);
+  line-height: var(--altura-linha);
+  color: var(--cor-navy);
+  background: var(--cor-paper);
+}
+
+/* Respeitar preferência de movimento reduzido — requisito de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Foco visível — NUNCA remover outline sem substituir por algo visível */
+:focus-visible {
+  outline: 3px solid var(--cor-terra-escuro);
+  outline-offset: 2px;
+}
+
+/* Link "pular para o conteúdo" — visível apenas quando focado */
+.pular-conteudo {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--cor-navy);
+  color: var(--cor-branco);
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+.pular-conteudo:focus {
+  left: 0;
+}
+
+/* Conteúdo só para leitores de tela */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+main { max-width: var(--largura-maxima); margin: 0 auto; padding: var(--espaco-secao) 1.25rem; }
+
+a { color: var(--cor-terra-escuro); }
+a:hover { text-decoration: underline; }
+
+h1,h2,h3 { line-height: 1.25; }
+
+/* Botões */
+.botao {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: none;
+  border-radius: var(--raio);
+  transition: background 0.2s, color 0.2s;
+  border: 2px solid transparent;
+}
+.botao-primario {
+  background: var(--cor-navy);
+  color: var(--cor-branco);
+  border-color: var(--cor-navy);
+}
+.botao-primario:hover {
+  background: var(--cor-terra-escuro);
+  border-color: var(--cor-terra-escuro);
+}
+.botao-secundario {
+  background: transparent;
+  color: var(--cor-navy);
+  border-color: var(--cor-navy);
+}
+.botao-secundario:hover {
+  background: var(--cor-navy);
+  color: var(--cor-branco);
+}
+
+/* Grade de soluções */
+.grade-solucoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* Card de solução */
+.card-solucao {
+  background: var(--cor-branco);
+  padding: 1.5rem;
+  border-radius: var(--raio);
+  border-top: 4px solid var(--cor-terra);
+}
+.card-solucao h3 { margin: 0 0 0.75rem; }
+.card-solucao h3 a { color: var(--cor-navy); text-decoration: none; }
+.card-solucao h3 a:hover { color: var(--cor-terra-escuro); text-decoration: underline; }

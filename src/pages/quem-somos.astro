@@ -1,0 +1,93 @@
+---
+// Quem somos — página institucional. Conteúdo: ver Institucionais_conteudo.docx
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import { getCollection } from 'astro:content';
+
+const equipe = await getCollection('equipe');
+equipe.sort((a, b) => a.data.ordem - b.data.ordem);
+---
+<Base titulo="A Ouver" descricao="Conheça a Ouver, empresa de acessibilidade audiovisual — equipe, valores e compromisso com a inclusão.">
+  <Hero
+    titulo="A Ouver"
+    subtitulo="A Ouver é uma empresa de acessibilidade audiovisual. Trabalhamos para que pessoas com deficiência visual e auditiva tenham acesso pleno a obras, eventos e conteúdos — não como cortesia, mas como direito."
+  />
+
+  <section aria-labelledby="valores">
+    <h2 id="valores">No que acreditamos</h2>
+    <ul class="lista-valores">
+      <li><strong>Acessibilidade é direito, não favor.</strong> Trabalhamos para garanti-lo com seriedade.</li>
+      <li><strong>Acessibilidade desde a concepção.</strong> O acesso pensado desde o início produz obras melhores para todos.</li>
+      <li><strong>Técnica com sensibilidade.</strong> Audiodescrição e legendagem são também escolhas estéticas, não só técnicas.</li>
+      <li><strong>Com as pessoas, não sobre elas.</strong> Pessoas com deficiência participam do nosso trabalho.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="equipe-titulo">
+    <h2 id="equipe-titulo">Quem faz a Ouver</h2>
+    {equipe.length > 0 ? (
+      <div class="grade-equipe">
+        {equipe.map((m) => (
+          <article class="card-pessoa">
+            {m.data.foto && <img src={m.data.foto} alt={m.data.fotoAlt} />}
+            <h3>{m.data.nome}</h3>
+            <p class="cargo">{m.data.cargo}</p>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <p>[Dados da equipe a serem preenchidos]</p>
+    )}
+  </section>
+
+  <section class="secao-conversao" aria-labelledby="conversao-quem">
+    <h2 id="conversao-quem">Quer trabalhar com a gente?</h2>
+    <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
+    <a href="/solucoes" class="botao botao-secundario">Conheça nossas soluções</a>
+  </section>
+</Base>
+
+<style>
+  .lista-valores {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+    max-width: 50rem;
+  }
+  .lista-valores li {
+    padding: 1.25rem;
+    background: var(--cor-branco);
+    border-radius: var(--raio);
+    border-left: 4px solid var(--cor-terra);
+  }
+  .grade-equipe {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 2rem;
+  }
+  .card-pessoa {
+    background: var(--cor-branco);
+    padding: 1.5rem;
+    border-radius: var(--raio);
+  }
+  .card-pessoa h3 {
+    margin: 0 0 0.25rem;
+  }
+  .cargo {
+    color: var(--cor-terra-escuro);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  .secao-conversao {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    background: var(--cor-branco);
+    border-radius: var(--raio);
+  }
+  .secao-conversao .botao {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+</style>

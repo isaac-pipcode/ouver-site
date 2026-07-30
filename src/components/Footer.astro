@@ -1,0 +1,20 @@
+---
+// Rodapé. CORRIGIR os links de redes sociais — no site antigo apontavam para perfis-placeholder do Wix.
+const redes = [
+  // Preencher com os perfis REAIS da Ouver. Remover os que não existirem.
+  // { rotulo: 'Instagram', href: 'https://instagram.com/...' },
+];
+---
+<footer>
+  <p>Ouver Acessibilidade — acessibilidade audiovisual</p>
+  {redes.length > 0 && (
+    <nav aria-label="Redes sociais">
+      <ul>
+        {redes.map((r) => (
+          <li><a href={r.href}>{r.rotulo}</a></li>
+        ))}
+      </ul>
+    </nav>
+  )}
+  <p><a href="/acessibilidade">Declaração de acessibilidade</a></p>
+</footer>

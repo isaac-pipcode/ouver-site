@@ -1,0 +1,29 @@
+---
+// Cabeçalho e navegação principal.
+// IMPORTANTE: diferente do site antigo, cada link aponta para uma PÁGINA REAL, não para âncoras na home.
+const navegacao = [
+  { rotulo: 'Início', href: '/' },
+  { rotulo: 'Quem somos', href: '/quem-somos' },
+  { rotulo: 'Soluções', href: '/solucoes' },
+  { rotulo: 'Portfólio', href: '/portfolio' },
+  { rotulo: 'Orçamento', href: '/orcamento' },
+];
+---
+<header>
+  <nav aria-label="Navegação principal">
+    <a href="/" aria-label="Ouver Acessibilidade, página inicial">
+      <!-- Substituir pelo SVG da nova logomarca. Garantir texto alternativo. -->
+      <strong>Ouver</strong>
+    </a>
+    <ul>
+      {navegacao.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            aria-current={Astro.url.pathname === item.href ? 'page' : undefined}
+          >{item.rotulo}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

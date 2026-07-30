@@ -1,0 +1,48 @@
+---
+// Inovação — macroárea Inovação.
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+---
+<Base titulo="Inovação — Ouver" descricao="Formação, pesquisa e soluções digitais para fazer o campo da acessibilidade avançar.">
+  <Hero
+    titulo="Inovação"
+    subtitulo="A Ouver não apenas faz acessibilidade — faz o campo avançar. Formamos profissionais, pesquisamos e desenvolvemos tecnologia para que a acessibilidade audiovisual evolua."
+    ctas={[
+      { rotulo: 'Solicitar orçamento', href: '/orcamento', primario: true },
+    ]}
+  />
+
+  <section aria-labelledby="formacao">
+    <h2 id="formacao">Formação</h2>
+    <p>A Ouver oferece capacitação em acessibilidade audiovisual para profissionais, empresas e instituições de ensino.</p>
+    <p>[Inserir dados reais: cursos oferecidos, carga horária, público-alvo, depoimentos de participantes.]</p>
+  </section>
+
+  <section aria-labelledby="pesquisa">
+    <h2 id="pesquisa">Pesquisa</h2>
+    <p>Com vínculo com a pesquisa acadêmica do campo, a Ouver participa de estudos e desenvolve conhecimento sobre acessibilidade audiovisual.</p>
+    <p>[Inserir dados reais: publicações, parcerias acadêmicas, projetos de pesquisa.]</p>
+  </section>
+
+  <section aria-labelledby="solucoes-digitais">
+    <h2 id="solucoes-digitais">Soluções digitais</h2>
+    <p>Desenvolvemos ferramentas e plataformas que facilitam a produção e distribuição de conteúdo acessível.</p>
+    <p>[Inserir dados reais: ferramentas desenvolvidas, projetos, tecnologias.]</p>
+  </section>
+
+  <section class="secao-conversao" aria-labelledby="conv-inov">
+    <h2 id="conv-inov">Quer inovar com a gente?</h2>
+    <p>Entre em contato para saber mais.</p>
+    <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
+  </section>
+</Base>
+
+<style>
+  .secao-conversao {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    background: var(--cor-branco);
+    border-radius: var(--raio);
+  }
+</style>

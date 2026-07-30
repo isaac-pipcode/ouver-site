@@ -1,0 +1,66 @@
+---
+// Portfólio — projetos realizados. Popular com dados reais da collection.
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import { getCollection } from 'astro:content';
+
+const projetos = await getCollection('portfolio');
+projetos.sort((a, b) => (b.data.ano ?? 0) - (a.data.ano ?? 0));
+---
+<Base titulo="Portfólio — Ouver Acessibilidade" descricao="Conheça projetos de acessibilidade audiovisual realizados pela Ouver.">
+  <Hero
+    titulo="Portfólio"
+    subtitulo="Projetos realizados pela Ouver em acessibilidade audiovisual, produção e inovação."
+  />
+
+  {projetos.length > 0 ? (
+    <section aria-labelledby="projetos-lista">
+      <h2 id="projetos-lista" class="sr-only">Projetos</h2>
+      <div class="grade-portfolio">
+        {projetos.map((p) => (
+          <article class="card-projeto">
+            {p.data.imagem && <img src={p.data.imagem} alt={p.data.imagemAlt} />}
+            <h3>{p.data.titulo}</h3>
+            {p.data.cliente && <p class="cliente">{p.data.cliente}</p>}
+            <p class="tipo">{p.data.tipo}</p>
+            {p.data.ano && <p class="ano">{p.data.ano}</p>}
+          </article>
+        ))}
+      </div>
+    </section>
+  ) : (
+    <section aria-labelledby="placeholder">
+      <h2 id="placeholder">Projetos em breve</h2>
+      <p>Estamos organizando nosso portfólio. Em breve, você poderá conferir aqui os projetos de acessibilidade audiovisual que realizamos.</p>
+      <p>Enquanto isso, <a href="/contato">entre em contato</a> para saber mais sobre nosso trabalho.</p>
+    </section>
+  )}
+
+  <section class="secao-conversao" aria-labelledby="conv-port">
+    <h2 id="conv-port">Vamos trabalhar juntos?</h2>
+    <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
+  </section>
+</Base>
+
+<style>
+  .grade-portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 2rem;
+  }
+  .card-projeto {
+    background: var(--cor-branco);
+    padding: 1.5rem;
+    border-radius: var(--raio);
+  }
+  .card-projeto h3 { margin: 0 0 0.5rem; }
+  .cliente { font-style: italic; }
+  .tipo, .ano { color: var(--cor-terra-escuro); font-size: 0.9rem; }
+  .secao-conversao {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    background: var(--cor-branco);
+    border-radius: var(--raio);
+  }
+</style>

@@ -1,0 +1,10 @@
+---
+// Cartão de macroárea/solução, usado na home e no hub Soluções.
+interface Props { titulo: string; descricao: string; href: string; }
+const { titulo, descricao, href } = Astro.props;
+---
+<article class="card-solucao">
+  <h3><a href={href}>{titulo}</a></h3>
+  <p>{descricao}</p>
+  <a href={href} aria-label={`Saber mais sobre ${titulo}`}>Saber mais</a>
+</article>

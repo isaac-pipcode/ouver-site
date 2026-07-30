@@ -1,0 +1,19 @@
+---
+// Bloco herói reutilizável. Recebe título (vira o H1 da página — único por página), subtítulo e CTAs.
+interface CTA { rotulo: string; href: string; primario?: boolean; }
+interface Props { titulo: string; subtitulo: string; ctas?: CTA[]; }
+const { titulo, subtitulo, ctas = [] } = Astro.props;
+---
+<section class="hero">
+  <h1>{titulo}</h1>
+  <p>{subtitulo}</p>
+  {ctas.length > 0 && (
+    <div class="hero-ctas">
+      {ctas.map((cta) => (
+        <a href={cta.href} class={cta.primario ? 'botao botao-primario' : 'botao botao-secundario'}>
+          {cta.rotulo}
+        </a>
+      ))}
+    </div>
+  )}
+</section>

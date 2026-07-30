@@ -1,0 +1,32 @@
+---
+// Layout base de todas as páginas.
+// Garante a estrutura semântica e os requisitos de acessibilidade que valem para o site inteiro.
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  titulo: string;        // vira o <title> e deve ser único por página
+  descricao: string;     // meta description (SEO)
+}
+const { titulo, descricao } = Astro.props;
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo} — Ouver Acessibilidade</title>
+    <meta name="description" content={descricao} />
+    <link rel="canonical" href={Astro.url.href} />
+  </head>
+  <body>
+    <!-- Link de pular para o conteúdo: primeiro item focável, requisito WCAG 2.4.1 -->
+    <a href="#conteudo" class="pular-conteudo">Pular para o conteúdo</a>
+    <Header />
+    <main id="conteudo">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

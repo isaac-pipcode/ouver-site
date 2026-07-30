@@ -1,0 +1,40 @@
+---
+// Hub Soluções — página-índice das três macroáreas.
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import CardSolucao from '../../components/CardSolucao.astro';
+
+const macroareas = [
+  { titulo: 'Tradução Audiovisual Acessível', descricao: 'Audiodescrição, Libras e legendagem para filmes, séries, quadrinhos, festivais e mostras — além de consultoria.', href: '/solucoes/traducao-audiovisual-acessivel' },
+  { titulo: 'Produção Audiovisual', descricao: 'Vídeos que já nascem acessíveis — produção sob demanda e materiais educativos com acessibilidade desde a concepção.', href: '/solucoes/producao-audiovisual' },
+  { titulo: 'Inovação', descricao: 'Formação, pesquisa e soluções digitais para fazer o campo da acessibilidade avançar.', href: '/solucoes/inovacao' },
+];
+---
+<Base titulo="Nossas soluções — Ouver Acessibilidade" descricao="Conheça as três áreas de atuação da Ouver: acessibilidade audiovisual, produção audiovisual e inovação.">
+  <Hero
+    titulo="Nossas soluções"
+    subtitulo="A acessibilidade audiovisual tem muitas dimensões — e a Ouver atua em três. Tornamos obras acessíveis, produzimos conteúdo que já nasce inclusivo e fazemos o campo avançar com formação, pesquisa e tecnologia. Escolha por onde começar."
+  />
+
+  <section aria-labelledby="areas">
+    <h2 id="areas" class="sr-only">Áreas de atuação</h2>
+    <div class="grade-solucoes">
+      {macroareas.map((m) => <CardSolucao {...m} />)}
+    </div>
+  </section>
+
+  <section class="secao-conversao" aria-labelledby="conversao-solucoes">
+    <h2 id="conversao-solucoes">Já sabe do que precisa?</h2>
+    <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
+  </section>
+</Base>
+
+<style>
+  .secao-conversao {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    background: var(--cor-branco);
+    border-radius: var(--raio);
+  }
+</style>
