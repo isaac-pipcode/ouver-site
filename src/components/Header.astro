@@ -1,5 +1,5 @@
 ---
-// Header — sticky, glassmorphism, responsivo com hamburger menu.
+// Header com símbolo Ouver (SVG) + wordmark + navegação.
 const navegacao = [
   { rotulo: 'Início', href: '/' },
   { rotulo: 'Quem somos', href: '/quem-somos' },
@@ -7,28 +7,25 @@ const navegacao = [
   { rotulo: 'Portfólio', href: '/portfolio' },
   { rotulo: 'Orçamento', href: '/orcamento' },
 ];
+const isHome = Astro.url.pathname === '/';
 ---
 <header class="site-header">
   <nav>
     <a href="/" class="logo" aria-label="Ouver Acessibilidade, página inicial">
-      <span class="logo-dot"></span>Ouver
+      <img src="/ouver-simbolo.svg" alt="" width="96" height="48" style="height:2.25rem;width:auto;" aria-hidden="true" />
+      <span class="logo-word">ouver</span>
     </a>
 
-    <button
-      class="menu-toggle"
-      aria-label="Abrir menu"
-      aria-expanded="false"
-    >
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
     <ul class="nav-links">
       {navegacao.map((item) => (
         <li>
-          <a
-            href={item.href}
-            aria-current={Astro.url.pathname === item.href ? 'page' : undefined}
-          >{item.rotulo}</a>
+          <a href={item.href} aria-current={Astro.url.pathname === item.href ? 'page' : undefined}>
+            {item.rotulo}
+          </a>
         </li>
       ))}
     </ul>
@@ -36,7 +33,6 @@ const navegacao = [
 </header>
 
 <script>
-  // Menu mobile toggle
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav-links');
   if (toggle && nav) {
