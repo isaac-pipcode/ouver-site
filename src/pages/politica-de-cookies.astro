@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+---
+<Base titulo="Política de Cookies" descricao="Saiba como a Ouver utiliza cookies em seu site, conforme a LGPD.">
+  <Hero
+    titulo="Política de Cookies"
+    subtitulo="Transparência sobre como utilizamos cookies para garantir sua privacidade e a melhor experiência em nosso site, em conformidade com a Lei Geral de Proteção de Dados (LGPD)."
+  />
+
+  <section class="secao secao-alt" aria-labelledby="o-que-sao">
+    <h2 id="o-que-sao">O que são cookies?</h2>
+    <p>Cookies são pequenos arquivos de texto armazenados no seu navegador quando você visita um site. Eles servem para lembrar preferências, melhorar a experiência de navegação e fornecer informações anônimas sobre como o site é utilizado.</p>
+  </section>
+
+  <section class="secao" aria-labelledby="como-usamos">
+    <h2 id="como-usamos">Como utilizamos cookies</h2>
+    <p>A Ouver utiliza cookies para as seguintes finalidades:</p>
+    <ul class="lista-valores">
+      <li>
+        <strong>Cookies estritamente necessários (essenciais)</strong><br />
+        Essenciais para o funcionamento do site. Permitem a navegação e o uso das funcionalidades básicas. Não podem ser desativados. Não coletam dados pessoais.
+      </li>
+      <li>
+        <strong>Cookies de preferências</strong><br />
+        Permitem que o site lembre escolhas que você faz (como seu consentimento de cookies) para proporcionar uma experiência personalizada.
+      </li>
+      <li>
+        <strong>Cookies analíticos (opcionais)</strong><br />
+        Utilizados apenas com seu consentimento. Coletam informações anônimas sobre como os visitantes interagem com o site — páginas visitadas, tempo de permanência, cliques. Usamos esses dados exclusivamente para melhorar nosso conteúdo e a experiência de navegação. Não identificamos usuários individualmente.
+      </li>
+    </ul>
+  </section>
+
+  <section class="secao secao-alt" aria-labelledby="cookies-site">
+    <h2 id="cookies-site">Cookies utilizados neste site</h2>
+    <ul class="lista-contextos">
+      <li><strong>ouv-cookie-consent</strong> — Armazena sua preferência de consentimento (essencial). Duração: 1 ano.</li>
+      <li><strong>Google Fonts</strong> — Carregamento de fontes tipográficas (Atkinson Hyperlegible, Quicksand, Archivo). O Google pode coletar dados anônimos de carregamento. Consulte a <a href="https://policies.google.com/privacy">Política de Privacidade do Google</a>.</li>
+      <li><strong>[Ferramenta de análise — a definir]</strong> — Mediante consentimento, poderemos utilizar uma ferramenta de análise para entender como o site é usado e melhorá-lo continuamente. Este cookie não existe hoje; será adicionado somente se e quando você consentir.</li>
+    </ul>
+  </section>
+
+  <section class="secao" aria-labelledby="como-gerenciar">
+    <h2 id="como-gerenciar">Como gerenciar cookies</h2>
+    <p>Você pode gerenciar suas preferências de cookies a qualquer momento:</p>
+    <ul class="lista-valores">
+      <li><strong>No navegador:</strong> As configurações do seu navegador permitem bloquear ou excluir cookies. Consulte a documentação do seu navegador (Chrome, Firefox, Safari, Edge).</li>
+      <li><strong>Neste site:</strong> Ao visitar pela primeira vez, você escolhe entre "Apenas essenciais" e "Aceitar todos". Para alterar sua escolha, limpe os dados de navegação deste site nas configurações do seu navegador e acesse novamente.</li>
+    </ul>
+  </section>
+
+  <section class="secao secao-alt" aria-labelledby="lgpd">
+    <h2 id="lgpd">Compromisso com a LGPD</h2>
+    <p>A Ouver respeita a <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018)</strong>. Nossa política de cookies está alinhada aos princípios de transparência, finalidade e necessidade.</p>
+    <ul class="lista-valores">
+      <li>Não coletamos dados pessoais sem consentimento explícito.</li>
+      <li>Cookies necessários são utilizados apenas para o funcionamento do site.</li>
+      <li>Você tem o direito de revogar seu consentimento a qualquer momento.</li>
+    </ul>
+  </section>
+
+  <section class="secao" aria-labelledby="contato-cookies">
+    <h2 id="contato-cookies">Dúvidas?</h2>
+    <p>Se tiver dúvidas sobre nossa política de cookies ou sobre privacidade de dados, <a href="/contato">entre em contato conosco</a>.</p>
+  </section>
+
+  <section style="text-align:center;padding:2rem;" aria-labelledby="atualizacao">
+    <p id="atualizacao" style="margin:0 auto;font-size:var(--ouv-text-caption);color:var(--ouv-text-mute);">Última atualização: julho de 2026</p>
+  </section>
+</Base>
