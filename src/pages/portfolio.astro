@@ -1,66 +1,82 @@
 ---
-// Portfólio — projetos realizados. Popular com dados reais da collection.
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import { getCollection } from 'astro:content';
 
 const projetos = await getCollection('portfolio');
-projetos.sort((a, b) => (b.data.ano ?? 0) - (a.data.ano ?? 0));
+projetos.sort((a, b) => {
+  if (a.data.categoria !== b.data.categoria) return a.data.categoria.localeCompare(b.data.categoria);
+  return a.data.titulo.localeCompare(b.data.titulo);
+});
+
+// Group projects by category
+const categorias: Record<string, { label: string; items: typeof projetos }> = {};
+for (const p of projetos) {
+  const cat = p.data.categoria || 'audiovisuais';
+  if (!categorias[cat]) categorias[cat] = { label: getCategoryLabel(cat), items: [] };
+  categorias[cat].items.push(p);
+}
+
+function getCategoryLabel(cat: string): string {
+  const labels: Record<string, string> = {
+    'audiovisuais': 'Audiovisual',
+    'educacionais': 'Educacionais',
+    'exposicoes': 'Exposições',
+    'audiolivros': 'Audiolivros',
+    'mostras': 'Mostras',
+  };
+  return labels[cat] || cat;
+}
 ---
-<Base titulo="Portfólio — Ouver Acessibilidade" descricao="Conheça projetos de acessibilidade audiovisual realizados pela Ouver.">
+<Base titulo="Portfólio" descricao="Conheça os projetos de acessibilidade audiovisual realizados pela Ouver — filmes, séries, exposições, materiais educativos e mais.">
   <Hero
     titulo="Portfólio"
-    subtitulo="Projetos realizados pela Ouver em acessibilidade audiovisual, produção e inovação."
+    subtitulo="Uma seleção dos trabalhos que desenvolvemos no campo da acessibilidade audiovisual — documentários, ficções, webséries, filmes experimentais, videoartes, obras instalativas, fotografias e exposições."
   />
 
-  {projetos.length > 0 ? (
-    <section aria-labelledby="projetos-lista">
-      <h2 id="projetos-lista" class="sr-only">Projetos</h2>
-      <div class="grade-portfolio">
-        {projetos.map((p) => (
-          <article class="card-projeto">
-            {p.data.imagem && <img src={p.data.imagem} alt={p.data.imagemAlt} />}
-            <h3>{p.data.titulo}</h3>
-            {p.data.cliente && <p class="cliente">{p.data.cliente}</p>}
-            <p class="tipo">{p.data.tipo}</p>
-            {p.data.ano && <p class="ano">{p.data.ano}</p>}
-          </article>
-        ))}
-      </div>
-    </section>
+  {Object.keys(categorias).length > 0 ? (
+    Object.entries(categorias).map(([cat, { label, items }]) => (
+      <section class="secao" aria-labelledby={`cat-${cat}`}>
+        <div class="section-heading">
+          <h2 id={`cat-${cat}`}>{label}</h2>
+        </div>
+        <div class="grade-portfolio">
+          {items.map((p) => (
+            <article class="card-projeto">
+              {p.data.imagem ? (
+                <img src={p.data.imagem} alt={p.data.imagemAlt || p.data.titulo} />
+              ) : (
+                <div style="height:200px;background:var(--ouv-surface);display:flex;align-items:center;justify-content:center;color:var(--ouv-text-mute);font-family:var(--ouv-font-display);font-size:1.5rem;" aria-hidden="true">
+                  {p.data.titulo}
+                </div>
+              )}
+              <div class="card-projeto-info">
+                <h3>{p.data.titulo}</h3>
+                {p.data.cliente && p.data.cliente !== '[Nome do cliente]' && (
+                  <p class="cliente">{p.data.cliente}</p>
+                )}
+                <p class="meta">
+                  <span>{p.data.tipo !== '[Serviço de acessibilidade]' ? p.data.tipo : ''}</span>
+                  {p.data.ano && p.data.ano !== '[Ano do projeto]' && <span>{p.data.ano}</span>}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))
   ) : (
-    <section aria-labelledby="placeholder">
-      <h2 id="placeholder">Projetos em breve</h2>
-      <p>Estamos organizando nosso portfólio. Em breve, você poderá conferir aqui os projetos de acessibilidade audiovisual que realizamos.</p>
-      <p>Enquanto isso, <a href="/contato">entre em contato</a> para saber mais sobre nosso trabalho.</p>
+    <section class="secao secao-alt" aria-labelledby="vazio">
+      <div class="section-heading">
+        <h2 id="vazio">Projetos em breve</h2>
+        <p>Estamos organizando nosso portfólio. Em breve você poderá conferir aqui os projetos realizados pela Ouver.</p>
+      </div>
     </section>
   )}
 
   <section class="secao-conversao" aria-labelledby="conv-port">
-    <h2 id="conv-port">Vamos trabalhar juntos?</h2>
+    <h2 id="conv-port">Quer seu projeto aqui?</h2>
+    <p>Conte sobre sua obra e como podemos torná-la acessível.</p>
     <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
   </section>
 </Base>
-
-<style>
-  .grade-portfolio {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    gap: 2rem;
-  }
-  .card-projeto {
-    background: var(--cor-branco);
-    padding: 1.5rem;
-    border-radius: var(--raio);
-  }
-  .card-projeto h3 { margin: 0 0 0.5rem; }
-  .cliente { font-style: italic; }
-  .tipo, .ano { color: var(--cor-terra-escuro); font-size: 0.9rem; }
-  .secao-conversao {
-    text-align: center;
-    margin-top: 4rem;
-    padding: 3rem;
-    background: var(--cor-branco);
-    border-radius: var(--raio);
-  }
-</style>

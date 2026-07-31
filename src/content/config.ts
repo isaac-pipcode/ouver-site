@@ -1,5 +1,3 @@
-// Content Collections do Astro — define o schema dos dados estruturados do site.
-// Permite versionar conteúdo (serviços, equipe, portfólio) como arquivos, com validação de tipos.
 import { defineCollection, z } from 'astro:content';
 
 const servicos = defineCollection({
@@ -18,7 +16,7 @@ const equipe = defineCollection({
     nome: z.string(),
     cargo: z.string(),
     foto: z.string().optional(),
-    fotoAlt: z.string(), // texto alternativo OBRIGATÓRIO — descritivo, nunca nome de arquivo
+    fotoAlt: z.string(),
     ordem: z.number().default(0),
   }),
 });
@@ -27,11 +25,13 @@ const portfolio = defineCollection({
   type: 'content',
   schema: z.object({
     titulo: z.string(),
+    categoria: z.string().default('audiovisuais'),
+    tipo: z.string().default('[Serviço de acessibilidade]'),
     cliente: z.string().optional(),
-    tipo: z.string(), // ex.: "Audiodescrição", "Produção", "LSE"
     imagem: z.string().optional(),
-    imagemAlt: z.string(),
-    ano: z.number().optional(),
+    imagemAlt: z.string().optional(),
+    ano: z.string().optional(),
+    ordem: z.number().default(0),
   }),
 });
 
