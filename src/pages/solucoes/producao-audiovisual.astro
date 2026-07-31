@@ -1,37 +1,30 @@
 ---
-// Produção Audiovisual — macroárea Produção.
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 ---
-<Base titulo="Produção Audiovisual — Ouver" descricao="Produção de vídeos com acessibilidade desde a concepção: materiais educativos, institucionais e conteúdo sob demanda.">
+<Base titulo="Produção Audiovisual" descricao="Produção de vídeos com acessibilidade desde a concepção: materiais educativos, institucionais e conteúdo sob demanda.">
   <Hero
     titulo="Produção Audiovisual"
     subtitulo="Precisa produzir um vídeo? Fazemos com acessibilidade desde a concepção — não como remendo no final, mas como parte do processo criativo."
-    ctas={[
-      { rotulo: 'Solicitar orçamento', href: '/orcamento', primario: true },
-    ]}
+    ctas={[{ rotulo: 'Solicitar orçamento', href: '/orcamento', primario: true }]}
   />
 
-  <section aria-labelledby="sob-demanda">
-    <h2 id="sob-demanda">Produção sob demanda</h2>
-    <p>Produzimos vídeos institucionais, conteúdos para redes sociais, materiais de divulgação e obras audiovisuais curtas com acessibilidade pensada desde o roteiro. Isso significa:</p>
-    <ul>
-      <li>Roteiro já prevê pausas para audiodescrição</li>
+  <section class="secao secao-alt" aria-labelledby="sob-demanda">
+    <div class="section-heading">
+      <h2 id="sob-demanda">Produção sob demanda</h2>
+    </div>
+    <p style="max-width:40rem;margin:0 auto var(--espaco-lg);">Produzimos vídeos institucionais, conteúdos para redes sociais, materiais de divulgação e obras audiovisuais com acessibilidade pensada desde o roteiro:</p>
+    <ul class="lista-contextos" style="max-width: 40rem;margin:0 auto;">
+      <li>Roteiro que prevê pausas para audiodescrição</li>
       <li>Enquadramentos que facilitam a janela de Libras</li>
       <li>Legendas em texto real desde a captação</li>
       <li>Controles de áudio e vídeo acessíveis</li>
     </ul>
   </section>
 
-  <section aria-labelledby="educativos">
-    <h2 id="educativos">Materiais audiovisuais educativos</h2>
-    <p>Conteúdo educacional acessível para cursos, treinamentos, instituições de ensino e plataformas de EAD. Cada material é produzido com:</p>
-    <ul>
-      <li>Audiodescrição integrada ou descrição textual alternativa</li>
-      <li>Legendas descritivas (LSE)</li>
-      <li>Janela de Libras quando aplicável</li>
-      <li>Transcrição textual completa</li>
-    </ul>
+  <section class="secao-destaque" aria-labelledby="educativos">
+    <h2 id="educativos">Materiais educativos</h2>
+    <p>Conteúdo educacional acessível para cursos, treinamentos e plataformas de EAD — com audiodescrição, legendas descritivas, Libras e transcrição textual completa.</p>
   </section>
 
   <section class="secao-conversao" aria-labelledby="conv-prod">
@@ -40,13 +33,3 @@ import Hero from '../../components/Hero.astro';
     <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
   </section>
 </Base>
-
-<style>
-  .secao-conversao {
-    text-align: center;
-    margin-top: 4rem;
-    padding: 3rem;
-    background: var(--cor-branco);
-    border-radius: var(--raio);
-  }
-</style>

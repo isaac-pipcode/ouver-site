@@ -1,5 +1,4 @@
 ---
-// HOME — porta de entrada. Conteúdo: ver Institucionais_conteudo.docx, seção "1. Home".
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import CardSolucao from '../components/CardSolucao.astro';
@@ -10,11 +9,10 @@ const macroareas = [
   { titulo: 'Produção Audiovisual', descricao: 'Produzimos vídeos que já nascem acessíveis — com acessibilidade pensada desde a concepção, não remendada no final.', href: '/solucoes/producao-audiovisual' },
   { titulo: 'Inovação', descricao: 'Formamos profissionais, pesquisamos e desenvolvemos tecnologia para fazer o campo da acessibilidade avançar.', href: '/solucoes/inovacao' },
 ];
-
-const equipe = await getCollection('equipe');
 ---
 <Base titulo="Acessibilidade audiovisual para que ninguém fique de fora" descricao="A Ouver torna filmes, séries, eventos e conteúdos acessíveis a pessoas com deficiência visual e auditiva.">
-  <!-- Bloco 1 — Herói -->
+
+  <!-- Hero -->
   <Hero
     titulo="Acessibilidade audiovisual para que ninguém fique de fora"
     subtitulo="A Ouver torna filmes, séries, eventos e conteúdos acessíveis a pessoas com deficiência visual e auditiva — com rigor técnico, sensibilidade estética e compromisso com a inclusão."
@@ -24,64 +22,46 @@ const equipe = await getCollection('equipe');
     ]}
   />
 
-  <!-- Bloco 2 — As três macroáreas -->
-  <section aria-labelledby="o-que-fazemos">
-    <h2 id="o-que-fazemos">O que fazemos</h2>
+  <!-- Bloco 2 — Macroáreas -->
+  <section class="secao" aria-labelledby="o-que-fazemos">
+    <div class="section-heading">
+      <h2 id="o-que-fazemos">O que fazemos</h2>
+      <p>A acessibilidade audiovisual tem muitas dimensões — e a Ouver atua em três.</p>
+    </div>
     <div class="grade-solucoes">
       {macroareas.map((m) => <CardSolucao {...m} />)}
     </div>
   </section>
 
   <!-- Bloco 3 — Por que acessibilidade importa -->
-  <section aria-labelledby="por-que-importa" class="secao-destaque">
+  <section class="secao-destaque" aria-labelledby="por-que-importa">
     <h2 id="por-que-importa">Toda obra merece ser vista, ouvida e compreendida por todos</h2>
     <p>Acessibilidade não é um acréscimo: é o que garante que sua obra alcance todas as pessoas. É também, cada vez mais, uma exigência legal. Na Ouver, unimos as duas coisas — fazemos acessibilidade que cumpre a lei e que respeita a obra e o público.</p>
   </section>
 
   <!-- Bloco 4 — Prova social -->
-  <section aria-labelledby="prova-social" class="secao-prova-social">
-    <h2 id="prova-social">[Clientes e projetos]</h2>
-    <p>[Logos de clientes e parceiros. 3–4 projetos em destaque com imagem. Se houver: números de impacto — obras acessibilizadas, horas de audiodescrição, festivais atendidos.]</p>
-    <p><a href="/portfolio">Conheça nosso portfólio →</a></p>
+  <section class="secao secao-alt" aria-labelledby="prova-social">
+    <div class="section-heading">
+      <h2 id="prova-social" class="mb-lg">Clientes e projetos</h2>
+    </div>
+    <div style="max-width: var(--largura-maxima); margin: 0 auto; text-align: center; padding: var(--espaco-xl); border: 2px dashed var(--cor-paper-escuro); border-radius: var(--raio-lg);">
+      <p style="margin: 0 auto;">[Logos de clientes e parceiros. 3–4 projetos em destaque com imagem. Números de impacto — obras acessibilizadas, horas de audiodescrição, festivais atendidos.]</p>
+      <p style="margin-top: var(--espaco-md);"><a href="/portfolio" class="botao botao-outline">Conheça nosso portfólio</a></p>
+    </div>
   </section>
 
   <!-- Bloco 5 — Quem somos (resumo) -->
-  <section aria-labelledby="quem-somos-resumo" class="secao-destaque">
+  <section class="secao-destaque" aria-labelledby="quem-somos-resumo">
     <h2 id="quem-somos-resumo">Quem somos</h2>
     <p>Somos uma equipe de especialistas em acessibilidade audiovisual, com formação técnica, experiência prática e vínculo com a pesquisa acadêmica do campo.</p>
-    <p><a href="/quem-somos">Conheça a equipe →</a></p>
+    <p style="margin-top: var(--espaco-lg);"><a href="/quem-somos" class="botao botao-outline">Conheça a equipe</a></p>
   </section>
 
   <!-- Bloco 6 — Conversão final -->
-  <section aria-labelledby="conversao-final" class="secao-conversao">
+  <section class="secao-conversao" aria-labelledby="conversao-final">
     <h2 id="conversao-final">Vamos tornar sua obra acessível?</h2>
     <p>Conte sobre seu projeto e receba um orçamento claro, sem compromisso.</p>
     <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
   </section>
-</Base>
 
-<style>
-  .secao-destaque {
-    max-width: 50rem;
-    margin: 4rem auto;
-    text-align: center;
-    padding: 3rem;
-    background: var(--cor-branco);
-    border-radius: var(--raio);
-  }
-  .secao-prova-social {
-    max-width: 50rem;
-    margin: 4rem auto;
-    padding: 2rem;
-    text-align: center;
-    border: 2px dashed var(--cor-terra);
-    border-radius: var(--raio);
-  }
-  .secao-conversao {
-    text-align: center;
-    margin-top: 4rem;
-    padding: 3rem;
-    background: var(--cor-branco);
-    border-radius: var(--raio);
-  }
-</style>
+</Base>

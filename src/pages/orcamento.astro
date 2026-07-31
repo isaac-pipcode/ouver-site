@@ -1,133 +1,91 @@
 ---
-// Orçamento — ponto único de conversão. Formulário acessível.
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 ---
-<Base titulo="Solicitar orçamento — Ouver" descricao="Solicite um orçamento para seu projeto de acessibilidade audiovisual.">
+<Base titulo="Solicitar orçamento" descricao="Solicite um orçamento para seu projeto de acessibilidade audiovisual.">
   <Hero
     titulo="Solicitar orçamento"
     subtitulo="Conte sobre seu projeto e receba um orçamento claro, sem compromisso. Responderemos em até [prazo] dias úteis."
   />
 
-  <section aria-labelledby="formulario-titulo">
-    <h2 id="formulario-titulo" class="sr-only">Formulário de orçamento</h2>
-    <form id="form-orcamento" action="[URL do backend]" method="POST" novalidate>
-      <div class="campo">
-        <label for="nome">Nome completo <span aria-label="obrigatório">*</span></label>
-        <input type="text" id="nome" name="nome" required aria-required="true" />
+  <form id="form-orcamento" action="[URL do backend]" method="POST" class="form-section" novalidate>
+    <div class="campo">
+      <label for="nome">Nome completo <span class="campo-required" aria-label="obrigatório">*</span></label>
+      <input type="text" id="nome" name="nome" required aria-required="true" />
+    </div>
+
+    <div class="campo">
+      <label for="email">E-mail <span class="campo-required" aria-label="obrigatório">*</span></label>
+      <input type="email" id="email" name="email" required aria-required="true" />
+    </div>
+
+    <div class="campo">
+      <label for="telefone">Telefone / WhatsApp</label>
+      <input type="tel" id="telefone" name="telefone" />
+    </div>
+
+    <div class="campo">
+      <label for="empresa">Empresa / Instituição</label>
+      <input type="text" id="empresa" name="empresa" />
+    </div>
+
+    <fieldset class="campo" style="border:none;padding:0;">
+      <legend>Qual serviço você precisa? <span class="campo-required" aria-label="obrigatório">*</span></legend>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:0.5rem;margin-top:0.5rem;">
+        <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="servico" value="audiodescricao" /> Audiodescrição</label>
+        <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="servico" value="libras" /> Tradução em Libras</label>
+        <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="servico" value="lse" /> Legendagem para Surdos</label>
+        <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="servico" value="producao" /> Produção Audiovisual</label>
+        <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="servico" value="consultoria" /> Consultoria</label>
+        <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="servico" value="formacao" /> Formação</label>
+        <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="servico" value="outro" /> Outro</label>
       </div>
+    </fieldset>
 
-      <div class="campo">
-        <label for="email">E-mail <span aria-label="obrigatório">*</span></label>
-        <input type="email" id="email" name="email" required aria-required="true" />
-      </div>
+    <div class="campo">
+      <label for="tipo-projeto">Tipo de projeto</label>
+      <select id="tipo-projeto" name="tipo-projeto">
+        <option value="">Selecione...</option>
+        <option value="filme">Filme</option>
+        <option value="serie">Série</option>
+        <option value="evento">Evento / Mostra / Festival</option>
+        <option value="educativo">Material educativo</option>
+        <option value="institucional">Conteúdo institucional</option>
+        <option value="digital">Solução digital</option>
+        <option value="outro">Outro</option>
+      </select>
+    </div>
 
-      <div class="campo">
-        <label for="telefone">Telefone / WhatsApp</label>
-        <input type="tel" id="telefone" name="telefone" />
-      </div>
+    <div class="campo">
+      <label for="duracao">Duração estimada (minutos)</label>
+      <input type="number" id="duracao" name="duracao" min="1" />
+    </div>
 
-      <div class="campo">
-        <label for="empresa">Empresa / Instituição</label>
-        <input type="text" id="empresa" name="empresa" />
-      </div>
+    <div class="campo">
+      <label for="prazo">Prazo desejado</label>
+      <input type="text" id="prazo" name="prazo" placeholder="Ex.: 30 dias, sem prazo definido..." />
+    </div>
 
-      <fieldset class="campo">
-        <legend>Qual serviço você precisa? <span aria-label="obrigatório">*</span></legend>
-        <div class="opcoes">
-          <label><input type="checkbox" name="servico" value="audiodescricao" /> Audiodescrição</label>
-          <label><input type="checkbox" name="servico" value="libras" /> Tradução em Libras</label>
-          <label><input type="checkbox" name="servico" value="lse" /> Legendagem para Surdos (LSE)</label>
-          <label><input type="checkbox" name="servico" value="producao" /> Produção Audiovisual</label>
-          <label><input type="checkbox" name="servico" value="consultoria" /> Consultoria</label>
-          <label><input type="checkbox" name="servico" value="formacao" /> Formação / Capacitação</label>
-          <label><input type="checkbox" name="servico" value="outro" /> Outro</label>
-        </div>
-      </fieldset>
+    <div class="campo">
+      <label for="mensagem">Descreva seu projeto <span class="campo-required" aria-label="obrigatório">*</span></label>
+      <textarea id="mensagem" name="mensagem" rows="6" required aria-required="true"></textarea>
+    </div>
 
-      <div class="campo">
-        <label for="tipo-projeto">Tipo de projeto</label>
-        <select id="tipo-projeto" name="tipo-projeto">
-          <option value="">Selecione...</option>
-          <option value="filme">Filme</option>
-          <option value="serie">Série</option>
-          <option value="evento">Evento / Mostra / Festival</option>
-          <option value="educativo">Material educativo</option>
-          <option value="institucional">Conteúdo institucional</option>
-          <option value="digital">Solução digital</option>
-          <option value="outro">Outro</option>
-        </select>
-      </div>
+    <div class="campo">
+      <label for="como-conheceu">Como nos conheceu?</label>
+      <select id="como-conheceu" name="como-conheceu">
+        <option value="">Selecione...</option>
+        <option value="indicacao">Indicação</option>
+        <option value="google">Google</option>
+        <option value="redes-sociais">Redes sociais</option>
+        <option value="evento">Evento / Festival</option>
+        <option value="outro">Outro</option>
+      </select>
+    </div>
 
-      <div class="campo">
-        <label for="duracao">Duração estimada (minutos)</label>
-        <input type="number" id="duracao" name="duracao" min="1" />
-      </div>
+    <div aria-live="polite" aria-atomic="true" style="min-height:1.5rem;font-weight:600;"></div>
 
-      <div class="campo">
-        <label for="prazo">Prazo desejado</label>
-        <input type="text" id="prazo" name="prazo" placeholder="Ex.: 30 dias, sem prazo definido..." />
-      </div>
-
-      <div class="campo">
-        <label for="mensagem">Descreva seu projeto <span aria-label="obrigatório">*</span></label>
-        <textarea id="mensagem" name="mensagem" rows="6" required aria-required="true"></textarea>
-      </div>
-
-      <div class="campo">
-        <label for="como-conheceu">Como nos conheceu?</label>
-        <select id="como-conheceu" name="como-conheceu">
-          <option value="">Selecione...</option>
-          <option value="indicacao">Indicação</option>
-          <option value="google">Google</option>
-          <option value="redes-sociais">Redes sociais</option>
-          <option value="evento">Evento / Festival</option>
-          <option value="outro">Outro</option>
-        </select>
-      </div>
-
-      <!-- Área de feedback de erro/confirmação para leitores de tela -->
-      <div aria-live="polite" aria-atomic="true" class="feedback-form"></div>
-
-      <button type="submit" class="botao botao-primario">Enviar solicitação</button>
-    </form>
-    <p class="campos-obrigatorios"><span aria-label="obrigatório">*</span> Campos obrigatórios</p>
-  </section>
+    <button type="submit" class="botao botao-primario">Enviar solicitação</button>
+    <p class="campo-help"><span class="campo-required">*</span> Campos obrigatórios</p>
+  </form>
 </Base>
-
-<style>
-  #form-orcamento {
-    max-width: 40rem;
-    display: grid;
-    gap: 1.5rem;
-  }
-  .campo {
-    display: grid;
-    gap: 0.5rem;
-  }
-  .campo label, .campo legend {
-    font-weight: 600;
-  }
-  .campo input, .campo select, .campo textarea {
-    padding: 0.75rem;
-    font-size: inherit;
-    font-family: inherit;
-    border: 2px solid var(--cor-navy);
-    border-radius: var(--raio);
-    background: var(--cor-branco);
-  }
-  .campo input:focus, .campo select:focus, .campo textarea:focus {
-    outline: 3px solid var(--cor-terra-escuro);
-    outline-offset: 2px;
-  }
-  fieldset.campo { border: none; padding: 0; }
-  .opcoes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-    gap: 0.5rem;
-  }
-  .opcoes label { font-weight: normal; display: flex; align-items: center; gap: 0.5rem; }
-  .feedback-form { font-weight: 600; min-height: 1.5rem; }
-  .campos-obrigatorios { font-size: 0.875rem; color: var(--cor-terra-escuro); }
-  .botao { display: inline-block; padding: 0.75rem 2rem; font-size: inherit; cursor: pointer; }
-</style>

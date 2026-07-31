@@ -1,46 +1,32 @@
 ---
-// Contato — via secundária, página simplificada.
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 ---
-<Base titulo="Contato — Ouver Acessibilidade" descricao="Entre em contato com a Ouver pelo e-mail ou WhatsApp.">
+<Base titulo="Contato" descricao="Entre em contato com a Ouver pelo e-mail ou WhatsApp.">
   <Hero
     titulo="Contato"
     subtitulo="Entre em contato conosco. Responderemos em até [prazo] dias úteis."
   />
 
-  <section aria-labelledby="canais">
-    <h2 id="canais">Canais de atendimento</h2>
-    <ul class="lista-contato">
+  <section class="secao secao-alt" aria-labelledby="canais">
+    <div class="section-heading">
+      <h2 id="canais">Canais de atendimento</h2>
+    </div>
+    <ul class="lista-valores">
       <li>
-        <strong>E-mail:</strong>
+        <strong>E-mail:</strong>{' '}
         <a href="mailto:[email@ouver.com.br]">[email@ouver.com.br]</a>
       </li>
       <li>
-        <strong>WhatsApp:</strong>
+        <strong>WhatsApp:</strong>{' '}
         <a href="https://wa.me/[55XXXXXXXXXXX]">[Clique para conversar]</a>
       </li>
     </ul>
   </section>
 
-  <section aria-labelledby="orcamento-cta">
+  <section class="secao-conversao" aria-labelledby="orcamento-cta">
     <h2 id="orcamento-cta">Prefere um orçamento?</h2>
     <p>Se você já sabe o que precisa, solicite um orçamento direto pelo formulário.</p>
     <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
   </section>
 </Base>
-
-<style>
-  .lista-contato {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: 1.5rem;
-    max-width: 30rem;
-  }
-  .lista-contato li {
-    padding: 1.25rem;
-    background: var(--cor-branco);
-    border-radius: var(--raio);
-  }
-</style>

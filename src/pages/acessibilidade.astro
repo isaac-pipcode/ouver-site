@@ -1,56 +1,43 @@
 ---
-// Declaração de Acessibilidade — compromisso com WCAG 2.2 e Lei 13.146/2015.
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 ---
-<Base titulo="Declaração de Acessibilidade — Ouver Acessibilidade" descricao="Compromisso da Ouver com a acessibilidade digital, conforme WCAG 2.2 e legislação brasileira.">
+<Base titulo="Declaração de Acessibilidade" descricao="Compromisso da Ouver com a acessibilidade digital, conforme WCAG 2.2 e legislação brasileira.">
   <Hero
     titulo="Declaração de Acessibilidade"
-    subtitulo="A Ouver está comprometida em garantir que seu site seja acessível a todas as pessoas, independentemente de deficiência ou tecnologia de assistência utilizada."
+    subtitulo="A Ouver está comprometida em garantir que seu site seja acessível a todas as pessoas, independentemente de deficiência ou tecnologia de assistência."
   />
 
-  <section aria-labelledby="compromisso">
+  <section class="secao secao-alt" aria-labelledby="compromisso">
     <h2 id="compromisso">Nosso compromisso</h2>
-    <p>Como empresa de acessibilidade audiovisual, seria incoerente oferecer um site que não fosse ele próprio um exemplo de boas práticas de acessibilidade. Este site foi construído seguindo os princípios do <strong>WCAG 2.2</strong> (Web Content Accessibility Guidelines) nos níveis AA e AAA sempre que possível, e em conformidade com a <strong>Lei nº 13.146/2015</strong> (Estatuto da Pessoa com Deficiência).</p>
+    <p>Como empresa de acessibilidade audiovisual, seria incoerente oferecer um site que não fosse ele próprio um exemplo de boas práticas de acessibilidade. Este site foi construído seguindo os princípios do <strong>WCAG 2.2</strong> nos níveis AA e AAA sempre que possível, e em conformidade com a <strong>Lei nº 13.146/2015</strong> (Estatuto da Pessoa com Deficiência).</p>
   </section>
 
-  <section aria-labelledby="praticas">
+  <section class="secao" aria-labelledby="praticas">
     <h2 id="praticas">Práticas adotadas</h2>
-    <ul>
-      <li><strong>Estrutura semântica:</strong> HTML semântico (<code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>footer</code>) com hierarquia de cabeçalhos correta e um único <code>h1</code> por página.</li>
-      <li><strong>Navegação por teclado:</strong> Todos os elementos interativos são acessíveis por teclado, com foco visível em todos os momentos.</li>
-      <li><strong>Contraste:</strong> As cores foram escolhidas para garantir contraste mínimo de 4,5:1 para texto e 3:1 para elementos não textuais.</li>
-      <li><strong>Texto alternativo:</strong> Todas as imagens possuem texto alternativo descritivo e significativo.</li>
-      <li><strong>Links descritivos:</strong> Links e botões têm texto que descreve seu destino ou ação, nunca "clique aqui".</li>
-      <li><strong>Skip link:</strong> Um link "Pular para o conteúdo" é o primeiro elemento focável em todas as páginas.</li>
-      <li><strong>Movimento reduzido:</strong> O site respeita a preferência do usuário por animações reduzidas (<code>prefers-reduced-motion</code>).</li>
-      <li><strong>Formulários acessíveis:</strong> Todos os campos de formulário possuem rótulos visíveis e associados, com mensagens de erro em texto.</li>
+    <ul class="lista-valores">
+      <li><strong>Estrutura semântica:</strong> HTML semântico com hierarquia de cabeçalhos correta e um único <code>h1</code> por página.</li>
+      <li><strong>Navegação por teclado:</strong> Todos os elementos interativos são acessíveis por teclado, com foco visível.</li>
+      <li><strong>Contraste:</strong> Cores com contraste mínimo de 4,5:1 para texto e 3:1 para elementos não textuais.</li>
+      <li><strong>Texto alternativo:</strong> Todas as imagens possuem <code>alt</code> descritivo.</li>
+      <li><strong>Skip link:</strong> Link "Pular para o conteúdo" como primeiro elemento focável.</li>
+      <li><strong>Movimento reduzido:</strong> Respeita <code>prefers-reduced-motion</code>.</li>
+      <li><strong>Formulários:</strong> Rótulos visíveis, erros em texto, campos obrigatórios indicados.</li>
     </ul>
   </section>
 
-  <section aria-labelledby="conformidade">
-    <h2 id="conformidade">Nível de conformidade</h2>
-    <p>Buscamos a conformidade com o <strong>WCAG 2.2 nível AA</strong> como meta mínima, e nível AAA sempre que viável. Realizamos testes com:</p>
-    <ul>
-      <li>Leitores de tela (NVDA, VoiceOver)</li>
-      <li>Navegação exclusiva por teclado</li>
-      <li>Ferramentas automatizadas (Lighthouse)</li>
-      <li>Validação manual com pessoas com deficiência — a própria rede de consultores da Ouver é um ativo para este processo</li>
-    </ul>
-  </section>
-
-  <section aria-labelledby="feedback">
+  <section class="secao-destaque" aria-labelledby="feedback">
     <h2 id="feedback">Feedback</h2>
-    <p>Se você encontrar qualquer barreira de acessibilidade neste site, por favor, <a href="/contato">entre em contato</a>. Levaremos seu relato a sério e trabalharemos para corrigir o problema.</p>
+    <p>Se você encontrar qualquer barreira de acessibilidade neste site, por favor, <a href="/contato" style="color:var(--cor-terra-claro);">entre em contato</a>. Levaremos seu relato a sério e trabalharemos para corrigir o problema.</p>
   </section>
 
-  <section aria-labelledby="atualizacao">
-    <h2 id="atualizacao">Última atualização</h2>
-    <p>Esta declaração foi atualizada pela última vez em julho de 2026.</p>
+  <section style="text-align:center;padding:2rem;" aria-labelledby="atualizacao">
+    <h2 id="atualizacao" style="font-size:var(--texto-base);">Última atualização: julho de 2026</h2>
   </section>
 </Base>
 
 <style>
-  section { max-width: 50rem; }
   code { background: var(--cor-branco); padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+  section p { max-width: var(--largura-texto); }
+  .secao p { margin: 0 auto; }
 </style>

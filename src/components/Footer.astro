@@ -1,20 +1,30 @@
 ---
-// Rodapé. CORRIGIR os links de redes sociais — no site antigo apontavam para perfis-placeholder do Wix.
-const redes = [
-  // Preencher com os perfis REAIS da Ouver. Remover os que não existirem.
-  // { rotulo: 'Instagram', href: 'https://instagram.com/...' },
+// Footer — fundo escuro, grid com links, declaração de acessibilidade.
+const navegacao = [
+  { rotulo: 'Quem somos', href: '/quem-somos' },
+  { rotulo: 'Soluções', href: '/solucoes' },
+  { rotulo: 'Portfólio', href: '/portfolio' },
+  { rotulo: 'Orçamento', href: '/orcamento' },
+  { rotulo: 'Contato', href: '/contato' },
 ];
 ---
-<footer>
-  <p>Ouver Acessibilidade — acessibilidade audiovisual</p>
-  {redes.length > 0 && (
-    <nav aria-label="Redes sociais">
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <p class="footer-brand">Ouver Acessibilidade</p>
+      <p>Acessibilidade audiovisual para que ninguém fique de fora.</p>
+    </div>
+    <div>
+      <h4>Páginas</h4>
       <ul>
-        {redes.map((r) => (
-          <li><a href={r.href}>{r.rotulo}</a></li>
+        {navegacao.map((item) => (
+          <li><a href={item.href}>{item.rotulo}</a></li>
         ))}
       </ul>
-    </nav>
-  )}
-  <p><a href="/acessibilidade">Declaração de acessibilidade</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p><a href="/acessibilidade">Declaração de acessibilidade</a></p>
+    <p>&copy; {new Date().getFullYear()} Ouver Acessibilidade</p>
+  </div>
 </footer>

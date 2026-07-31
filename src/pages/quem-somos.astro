@@ -1,5 +1,4 @@
 ---
-// Quem somos — página institucional. Conteúdo: ver Institucionais_conteudo.docx
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import { getCollection } from 'astro:content';
@@ -13,8 +12,10 @@ equipe.sort((a, b) => a.data.ordem - b.data.ordem);
     subtitulo="A Ouver é uma empresa de acessibilidade audiovisual. Trabalhamos para que pessoas com deficiência visual e auditiva tenham acesso pleno a obras, eventos e conteúdos — não como cortesia, mas como direito."
   />
 
-  <section aria-labelledby="valores">
-    <h2 id="valores">No que acreditamos</h2>
+  <section class="secao secao-alt" aria-labelledby="valores">
+    <div class="section-heading">
+      <h2 id="valores">No que acreditamos</h2>
+    </div>
     <ul class="lista-valores">
       <li><strong>Acessibilidade é direito, não favor.</strong> Trabalhamos para garanti-lo com seriedade.</li>
       <li><strong>Acessibilidade desde a concepção.</strong> O acesso pensado desde o início produz obras melhores para todos.</li>
@@ -23,71 +24,38 @@ equipe.sort((a, b) => a.data.ordem - b.data.ordem);
     </ul>
   </section>
 
-  <section aria-labelledby="equipe-titulo">
-    <h2 id="equipe-titulo">Quem faz a Ouver</h2>
+  <section class="secao" aria-labelledby="equipe-titulo">
+    <div class="section-heading">
+      <h2 id="equipe-titulo">Quem faz a Ouver</h2>
+      <p>A equipe por trás da acessibilidade que entregamos.</p>
+    </div>
     {equipe.length > 0 ? (
       <div class="grade-equipe">
         {equipe.map((m) => (
           <article class="card-pessoa">
-            {m.data.foto && <img src={m.data.foto} alt={m.data.fotoAlt} />}
+            {m.data.foto ? (
+              <img src={m.data.foto} alt={m.data.fotoAlt} />
+            ) : (
+              <div style="height:240px;background:var(--cor-paper-escuro);display:flex;align-items:center;justify-content:center;color:var(--cor-terra-escuro);font-size:3rem;" aria-hidden="true">
+                {m.data.nome.trim().split(' ').map(n => n[0]).join('').slice(0, 2)}
+              </div>
+            )}
             <h3>{m.data.nome}</h3>
             <p class="cargo">{m.data.cargo}</p>
           </article>
         ))}
       </div>
     ) : (
-      <p>[Dados da equipe a serem preenchidos]</p>
+      <p style="text-align:center;max-width:30rem;margin:0 auto;">[Dados da equipe a serem preenchidos]</p>
     )}
   </section>
 
   <section class="secao-conversao" aria-labelledby="conversao-quem">
     <h2 id="conversao-quem">Quer trabalhar com a gente?</h2>
-    <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
-    <a href="/solucoes" class="botao botao-secundario">Conheça nossas soluções</a>
+    <p>Conheça nossas soluções ou solicite um orçamento.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
+      <a href="/solucoes" class="botao botao-outline">Conheça nossas soluções</a>
+    </div>
   </section>
 </Base>
-
-<style>
-  .lista-valores {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: 1.5rem;
-    max-width: 50rem;
-  }
-  .lista-valores li {
-    padding: 1.25rem;
-    background: var(--cor-branco);
-    border-radius: var(--raio);
-    border-left: 4px solid var(--cor-terra);
-  }
-  .grade-equipe {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    gap: 2rem;
-  }
-  .card-pessoa {
-    background: var(--cor-branco);
-    padding: 1.5rem;
-    border-radius: var(--raio);
-  }
-  .card-pessoa h3 {
-    margin: 0 0 0.25rem;
-  }
-  .cargo {
-    color: var(--cor-terra-escuro);
-    font-size: 0.9rem;
-    margin: 0;
-  }
-  .secao-conversao {
-    text-align: center;
-    margin-top: 4rem;
-    padding: 3rem;
-    background: var(--cor-branco);
-    border-radius: var(--raio);
-  }
-  .secao-conversao .botao {
-    display: inline-block;
-    margin: 0.5rem;
-  }
-</style>

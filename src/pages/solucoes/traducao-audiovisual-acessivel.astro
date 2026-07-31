@@ -1,19 +1,18 @@
 ---
-// Tradução Audiovisual Acessível — macroárea Acessibilidade (core).
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 ---
-<Base titulo="Tradução Audiovisual Acessível — Ouver" descricao="Audiodescrição, Libras e legendagem para filmes, séries, quadrinhos, festivais e mostras. Consultoria em acessibilidade audiovisual.">
+<Base titulo="Tradução Audiovisual Acessível" descricao="Audiodescrição, Libras e legendagem para filmes, séries, quadrinhos, festivais e mostras.">
   <Hero
     titulo="Tradução Audiovisual Acessível"
-    subtitulo="Sua obra já existe e precisa ser acessível? Tornamos filmes, séries, eventos e conteúdos acessíveis a pessoas com deficiência visual e auditiva — com rigor técnico, sensibilidade estética e compromisso com a inclusão."
-    ctas={[
-      { rotulo: 'Solicitar orçamento', href: '/orcamento', primario: true },
-    ]}
+    subtitulo="Sua obra já existe e precisa ser acessível? Tornamos filmes, séries, eventos e conteúdos acessíveis a pessoas com deficiência visual e auditiva."
+    ctas={[{ rotulo: 'Solicitar orçamento', href: '/orcamento', primario: true }]}
   />
 
-  <section aria-labelledby="modalidades">
-    <h2 id="modalidades">Modalidades técnicas</h2>
+  <section class="secao secao-alt" aria-labelledby="modalidades">
+    <div class="section-heading">
+      <h2 id="modalidades">Modalidades técnicas</h2>
+    </div>
     <div class="grade-servicos">
       <article class="card-servico">
         <h3>Audiodescrição (AD)</h3>
@@ -25,13 +24,15 @@ import Hero from '../../components/Hero.astro';
       </article>
       <article class="card-servico">
         <h3>LSE — Legendagem para Surdos e Ensurdecidos</h3>
-        <p>Legendas que não apenas transcrevem as falas, mas também identificam falantes, efeitos sonoros, trilha musical e tom da voz — garantindo que pessoas surdas ou com deficiência auditiva tenham acesso a todas as informações sonoras da obra.</p>
+        <p>Legendas que transcrevem falas, identificam falantes, efeitos sonoros, trilha musical e tom da voz — garantindo acesso a todas as informações sonoras da obra.</p>
       </article>
     </div>
   </section>
 
-  <section aria-labelledby="contextos">
-    <h2 id="contextos">Contextos de aplicação</h2>
+  <section class="secao" aria-labelledby="contextos">
+    <div class="section-heading">
+      <h2 id="contextos">Contextos de aplicação</h2>
+    </div>
     <ul class="lista-contextos">
       <li><strong>Filmes e séries</strong> — distribuição, festivais, plataformas de streaming</li>
       <li><strong>Quadrinhos e publicações</strong> — audiodescrição de imagens estáticas, adaptação tátil</li>
@@ -40,9 +41,9 @@ import Hero from '../../components/Hero.astro';
     </ul>
   </section>
 
-  <section aria-labelledby="consultoria">
+  <section class="secao-destaque" aria-labelledby="consultoria">
     <h2 id="consultoria">Consultoria</h2>
-    <p>Além da execução, a Ouver oferece consultoria em acessibilidade audiovisual: análise de obras, elaboração de políticas de acessibilidade, capacitação de equipes e adequação de processos de produção para incorporar acessibilidade desde a concepção.</p>
+    <p>Além da execução, oferecemos consultoria em acessibilidade audiovisual: análise de obras, políticas de acessibilidade, capacitação e adequação de processos.</p>
   </section>
 
   <section class="secao-conversao" aria-labelledby="conv-tava">
@@ -51,36 +52,3 @@ import Hero from '../../components/Hero.astro';
     <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
   </section>
 </Base>
-
-<style>
-  .grade-servicos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    gap: 2rem;
-  }
-  .card-servico {
-    background: var(--cor-branco);
-    padding: 1.5rem;
-    border-radius: var(--raio);
-    border-top: 4px solid var(--cor-terra);
-  }
-  .card-servico h3 { margin: 0 0 0.75rem; }
-  .lista-contextos {
-    display: grid;
-    gap: 1rem;
-    padding: 0;
-    list-style: none;
-  }
-  .lista-contextos li {
-    padding: 1rem;
-    background: var(--cor-branco);
-    border-radius: var(--raio);
-  }
-  .secao-conversao {
-    text-align: center;
-    margin-top: 4rem;
-    padding: 3rem;
-    background: var(--cor-branco);
-    border-radius: var(--raio);
-  }
-</style>

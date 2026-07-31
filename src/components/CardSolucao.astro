@@ -1,10 +1,17 @@
 ---
-// Cartão de macroárea/solução, usado na home e no hub Soluções.
-interface Props { titulo: string; descricao: string; href: string; }
-const { titulo, descricao, href } = Astro.props;
+// CardSolucao — cartão de macroárea com ícone, título, descrição e link.
+interface Props { titulo: string; descricao: string; href: string; icone?: string; }
+const { titulo, descricao, href, icone } = Astro.props;
+// Ícones como emoji — acessível com aria-hidden
+const icones: Record<string, string> = {
+  'Tradução Audiovisual Acessível': '🎬',
+  'Produção Audiovisual': '🎥',
+  'Inovação': '💡',
+};
 ---
 <article class="card-solucao">
+  <div class="card-solucao-icon" aria-hidden="true">{icones[titulo] || '◆'}</div>
   <h3><a href={href}>{titulo}</a></h3>
   <p>{descricao}</p>
-  <a href={href} aria-label={`Saber mais sobre ${titulo}`}>Saber mais</a>
+  <a href={href} class="card-link" aria-label={`Saber mais sobre ${titulo}`}>Saber mais</a>
 </article>

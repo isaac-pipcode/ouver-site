@@ -1,6 +1,5 @@
 ---
-// Cabeçalho e navegação principal.
-// IMPORTANTE: diferente do site antigo, cada link aponta para uma PÁGINA REAL, não para âncoras na home.
+// Header — sticky, glassmorphism, responsivo com hamburger menu.
 const navegacao = [
   { rotulo: 'Início', href: '/' },
   { rotulo: 'Quem somos', href: '/quem-somos' },
@@ -9,13 +8,21 @@ const navegacao = [
   { rotulo: 'Orçamento', href: '/orcamento' },
 ];
 ---
-<header>
-  <nav aria-label="Navegação principal">
-    <a href="/" aria-label="Ouver Acessibilidade, página inicial">
-      <!-- Substituir pelo SVG da nova logomarca. Garantir texto alternativo. -->
-      <strong>Ouver</strong>
+<header class="site-header">
+  <nav>
+    <a href="/" class="logo" aria-label="Ouver Acessibilidade, página inicial">
+      <span class="logo-dot"></span>Ouver
     </a>
-    <ul>
+
+    <button
+      class="menu-toggle"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links">
       {navegacao.map((item) => (
         <li>
           <a
@@ -27,3 +34,15 @@ const navegacao = [
     </ul>
   </nav>
 </header>
+
+<script>
+  // Menu mobile toggle
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav-links');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const expanded = nav.classList.toggle('active');
+      toggle.setAttribute('aria-expanded', String(expanded));
+    });
+  }
+</script>
