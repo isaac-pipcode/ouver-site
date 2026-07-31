@@ -6,10 +6,10 @@ import { getCollection } from 'astro:content';
 const equipe = await getCollection('equipe');
 equipe.sort((a, b) => a.data.ordem - b.data.ordem);
 ---
-<Base titulo="A Ouver" descricao="Conheça a Ouver, empresa de acessibilidade audiovisual — equipe, valores e compromisso com a inclusão.">
+<Base titulo="A Ouver" descricao="A Ouver é especializada em acessibilidade audiovisual, atuando nos três pilares: Audiodescrição, Libras e Legendagem para Surdos e Ensurdecidos.">
   <Hero
     titulo="A Ouver"
-    subtitulo="A Ouver é uma empresa de acessibilidade audiovisual. Trabalhamos para que pessoas com deficiência visual e auditiva tenham acesso pleno a obras, eventos e conteúdos — não como cortesia, mas como direito."
+    subtitulo="A Ouver é uma empresa de acessibilidade audiovisual. Trabalhamos para que filmes, séries, espetáculos, exposições e conteúdos de toda natureza sejam acessíveis a pessoas com deficiência visual e auditiva — com rigor técnico, sensibilidade estética e compromisso com a inclusão."
   />
 
   <section class="secao secao-alt" aria-labelledby="valores">
@@ -17,17 +17,22 @@ equipe.sort((a, b) => a.data.ordem - b.data.ordem);
       <h2 id="valores">No que acreditamos</h2>
     </div>
     <ul class="lista-valores">
-      <li><strong>Acessibilidade é direito, não favor.</strong> Trabalhamos para garanti-lo com seriedade.</li>
-      <li><strong>Acessibilidade desde a concepção.</strong> O acesso pensado desde o início produz obras melhores para todos.</li>
-      <li><strong>Técnica com sensibilidade.</strong> Audiodescrição e legendagem são também escolhas estéticas, não só técnicas.</li>
-      <li><strong>Com as pessoas, não sobre elas.</strong> Pessoas com deficiência participam do nosso trabalho.</li>
+      <li><strong>Acessibilidade é direito, não favor.</strong> Trabalhamos para garanti-lo com seriedade. A inclusão da acessibilidade em projetos audiovisuais é um imperativo ético e legal que assegura que a produção artística e cultural seja acessível a todas as pessoas.</li>
+      <li><strong>Acessibilidade desde a concepção.</strong> O acesso pensado desde o início produz obras melhores para todos — não remendado no final, mas integrado ao processo criativo.</li>
+      <li><strong>Técnica com sensibilidade.</strong> Audiodescrição, tradução em Libras e legendagem são também escolhas estéticas, não apenas técnicas. Cada projeto recebe um tratamento que respeita a obra e o público.</li>
+      <li><strong>Com as pessoas, não sobre elas.</strong> Nossa equipe reúne especialistas com formação técnica, experiência prática e vínculo com a pesquisa acadêmica do campo. Acreditamos que acessibilidade de verdade não se faz sobre alguém — se faz com alguém.</li>
     </ul>
+  </section>
+
+  <section class="secao-destaque" aria-labelledby="atuacao">
+    <h2 id="atuacao">Escopo de atuação</h2>
+    <p style="max-width:40rem;margin:var(--ouv-s5) auto 0;">Colaboramos com projetos de acessibilidade audiovisual para museus, equipamentos culturais, escolas, universidades, produtoras, emissoras de TV e empresas — em filmes e séries de ficção, documentário e animação, projetos educacionais, mostras de cinema, vídeos institucionais, artes visuais e da cena.</p>
   </section>
 
   <section class="secao" aria-labelledby="equipe-titulo">
     <div class="section-heading">
       <h2 id="equipe-titulo">Quem faz a Ouver</h2>
-      <p>A equipe por trás da acessibilidade que entregamos.</p>
+      <p>Profissionais com formação, experiência e vínculo com a pesquisa acadêmica em acessibilidade.</p>
     </div>
     {equipe.length > 0 ? (
       <div class="grade-equipe">
@@ -36,7 +41,7 @@ equipe.sort((a, b) => a.data.ordem - b.data.ordem);
             {m.data.foto ? (
               <img src={m.data.foto} alt={m.data.fotoAlt} />
             ) : (
-              <div style="height:240px;background:var(--cor-paper-escuro);display:flex;align-items:center;justify-content:center;color:var(--cor-terra-escuro);font-size:3rem;" aria-hidden="true">
+              <div style="height:260px;background:var(--ouv-surface);display:flex;align-items:center;justify-content:center;color:var(--ouv-text-mute);font-size:3rem;" aria-hidden="true">
                 {m.data.nome.trim().split(' ').map(n => n[0]).join('').slice(0, 2)}
               </div>
             )}
@@ -52,8 +57,8 @@ equipe.sort((a, b) => a.data.ordem - b.data.ordem);
 
   <section class="secao-conversao" aria-labelledby="conversao-quem">
     <h2 id="conversao-quem">Quer trabalhar com a gente?</h2>
-    <p>Conheça nossas soluções ou solicite um orçamento.</p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <p>Conte sobre seu projeto e receba um orçamento claro, sem compromisso.</p>
+    <div style="display:flex;gap:var(--ouv-s4);justify-content:center;flex-wrap:wrap;">
       <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
       <a href="/solucoes" class="botao botao-outline">Conheça nossas soluções</a>
     </div>
