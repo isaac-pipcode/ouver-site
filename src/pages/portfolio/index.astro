@@ -1,0 +1,85 @@
+---
+// Portfólio — índice por categorias (nível 1 de 3).
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import { getCollection } from 'astro:content';
+import { labelCategoria, descricaoCategoria, ordemCategoria } from '../../data/categorias';
+
+const projetos = await getCollection('portfolio');
+
+// agrupa por categoria
+const grupos: Record<string, typeof projetos> = {};
+for (const p of projetos) {
+  const c = p.data.categoria || 'audiovisuais';
+  if (!grupos[c]) grupos[c] = [];
+  grupos[c].push(p);
+}
+
+// ordena itens dentro de cada grupo
+for (const k of Object.keys(grupos)) {
+  grupos[k].sort((a, b) => a.data.titulo.localeCompare(b.data.titulo, 'pt-BR'));
+}
+
+// monta os cards de categoria
+const cats = Object.entries(grupos)
+  .map(([slug, items]) => {
+    const comImg = items.find((i) => i.data.imagem && !i.data.imagem.trim().startsWith('['));
+    return {
+      slug,
+      label: labelCategoria(slug),
+      descricao: descricaoCategoria(slug),
+      total: items.length,
+      imagem: comImg?.data.imagem,
+      imagemAlt: comImg?.data.imagemAlt,
+      exemplo: comImg?.data.titulo,
+    };
+  })
+  .sort((a, b) => ordemCategoria(a.slug) - ordemCategoria(b.slug));
+
+const totalObras = projetos.length;
+---
+<Base
+  titulo="Portfólio"
+  descricao="Conheça os projetos de acessibilidade audiovisual da Ouver, organizados por categoria — filmes, séries, educacionais, audiolivros, exposições e mostras."
+>
+  <Hero
+    titulo="Portfólio"
+    subtitulo={`Uma seleção de ${totalObras} obras e projetos em que desenvolvemos acessibilidade audiovisual. Navegue por categoria para conhecer cada trabalho.`}
+  />
+
+  <section class="secao" aria-labelledby="categorias">
+    <div class="section-heading">
+      <h2 id="categorias">Navegue por categoria</h2>
+      <p>Escolha uma categoria para ver os trabalhos.</p>
+    </div>
+
+    <ul class="grade-categorias">
+      {cats.map((c) => (
+        <li>
+          <a class="card-categoria" href={`/portfolio/${c.slug}`}>
+            {c.imagem ? (
+              <img src={c.imagem} alt={c.imagemAlt || ''} loading="lazy" />
+            ) : (
+              <span class="card-categoria-vazia" aria-hidden="true">{c.label}</span>
+            )}
+            <span class="card-categoria-corpo">
+              <span class="card-categoria-titulo">
+                <span class="card-categoria-nome">{c.label}</span>
+                <span class="card-categoria-contagem">
+                  {c.total} {c.total === 1 ? 'trabalho' : 'trabalhos'}
+                </span>
+              </span>
+              {c.descricao && <span class="card-categoria-desc">{c.descricao}</span>}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="secao-conversao" aria-labelledby="conv-port">
+    <h2 id="conv-port">Quer seu projeto aqui?</h2>
+    <p>Conte sobre sua obra e como podemos torná-la acessível.</p>
+    <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
+  </section>
+</Base>

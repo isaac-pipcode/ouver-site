@@ -8,12 +8,10 @@ imagemAlt: "[Descricao da imagem - Amor de Bicho]"
 ordem: 0
 ---
 
-## Sinopse
+## Sobre a obra
 
-[Sinopse do projeto "Amor de Bicho"]
+Integra o portfólio de acessibilidade audiovisual da Ouver.
 
-## Servicos realizados
+## Ficha técnica
 
-- [ ] Audiodescricao
-- [ ] Libras
-- [ ] Legendagem para Surdos e Ensurdecidos (LSE)
+Preenchendo — sinopse, ano, equipe e serviços aplicados a esta obra.

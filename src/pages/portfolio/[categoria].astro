@@ -1,0 +1,71 @@
+---
+// Portfólio — trabalhos de uma categoria (nível 2 de 3).
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import { getCollection } from 'astro:content';
+import { labelCategoria, descricaoCategoria } from '../../data/categorias';
+
+export async function getStaticPaths() {
+  const projetos = await getCollection('portfolio');
+  const cats = new Set(projetos.map((p) => p.data.categoria || 'audiovisuais'));
+  return [...cats].map((cat) => ({
+    params: { categoria: cat },
+    props: { categoria: cat },
+  }));
+}
+
+const { categoria } = Astro.props;
+const todos = await getCollection('portfolio');
+const trabalhos = todos
+  .filter((p) => (p.data.categoria || 'audiovisuais') === categoria)
+  .sort((a, b) => a.data.titulo.localeCompare(b.data.titulo, 'pt-BR'));
+
+const label = labelCategoria(categoria);
+const descricao = descricaoCategoria(categoria);
+---
+<Base
+  titulo={`Portfólio — ${label}`}
+  descricao={`${label}: trabalhos de acessibilidade audiovisual realizados pela Ouver. ${descricao}`}
+>
+  <Hero
+    titulo={label}
+    subtitulo={`${trabalhos.length} ${trabalhos.length === 1 ? 'trabalho' : 'trabalhos'}${descricao ? ' — ' + descricao : ''}`}
+  />
+
+  <nav class="migalhas" aria-label="Trilha de navegação">
+    <ol>
+      <li><a href="/portfolio">Portfólio</a></li>
+      <li aria-current="page">{label}</li>
+    </ol>
+  </nav>
+
+  <section class="secao" aria-labelledby="lista">
+    <h2 id="lista" class="visualmente-oculto">Trabalhos em {label}</h2>
+
+    <ul class="grade-portfolio">
+      {trabalhos.map((p) => (
+        <li>
+          <a class="card-projeto" href={`/portfolio/${categoria}/${p.id.replace(/\.(md|mdx)$/, '')}`}>
+            {p.data.imagem && !p.data.imagem.trim().startsWith('[') ? (
+              <img src={p.data.imagem} alt={p.data.imagemAlt || ''} loading="lazy" />
+            ) : (
+              <span class="card-projeto-vazio" aria-hidden="true">{p.data.titulo}</span>
+            )}
+            <span class="card-projeto-info">
+              <span class="card-projeto-titulo">{p.data.titulo}</span>
+              {p.data.ano && !p.data.ano.trim().startsWith('[') && (
+                <span class="meta">{p.data.ano}</span>
+              )}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="secao-conversao" aria-labelledby="conv-cat">
+    <h2 id="conv-cat">Quer um projeto em {label}?</h2>
+    <p>Conte sobre sua obra e como podemos torná-la acessível.</p>
+    <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
+  </section>
+</Base>

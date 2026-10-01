@@ -8,12 +8,10 @@ imagemAlt: "[Descricao da imagem - Fazendo Arte como Nao Podia Fazer Quando Cria
 ordem: 0
 ---
 
-## Sinopse
+## Sobre a obra
 
-[Sinopse do projeto "Fazendo Arte como Nao Podia Fazer Quando Crianca"]
+Integra o portfólio de acessibilidade audiovisual da Ouver.
 
-## Servicos realizados
+## Ficha técnica
 
-- [ ] Audiodescricao
-- [ ] Libras
-- [ ] Legendagem para Surdos e Ensurdecidos (LSE)
+Preenchendo — sinopse, ano, equipe e serviços aplicados a esta obra.

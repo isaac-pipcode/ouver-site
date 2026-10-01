@@ -1,0 +1,104 @@
+---
+// Portfólio — página dedicada de um trabalho (nível 3 de 3).
+import Base from '../../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { labelCategoria } from '../../../data/categorias';
+
+export async function getStaticPaths() {
+  const projetos = await getCollection('portfolio');
+  return projetos.map((p) => ({
+    params: { categoria: p.data.categoria || 'audiovisuais', slug: p.id.replace(/\.(md|mdx)$/, '') },
+    props: { entry: p },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const categoria = entry.data.categoria || 'audiovisuais';
+const label = labelCategoria(categoria);
+
+// trabalhos irmãos (mesma categoria) para navegação anterior/próximo
+const irmaos = (await getCollection('portfolio'))
+  .filter((p) => (p.data.categoria || 'audiovisuais') === categoria)
+  .sort((a, b) => a.data.titulo.localeCompare(b.data.titulo, 'pt-BR'));
+const idx = irmaos.findIndex((p) => p.id === entry.id);
+const anterior = idx > 0 ? irmaos[idx - 1] : null;
+const proximo = idx >= 0 && idx < irmaos.length - 1 ? irmaos[idx + 1] : null;
+
+// só mostra campos com dado real (ignora placeholders entre colchetes)
+const real = (v?: string) => !!v && !v.trim().startsWith('[');
+const ficha = [
+  { rotulo: 'Categoria', valor: label },
+  ...(real(entry.data.tipo) ? [{ rotulo: 'Tipo', valor: entry.data.tipo! }] : []),
+  ...(real(entry.data.cliente) ? [{ rotulo: 'Cliente', valor: entry.data.cliente! }] : []),
+  ...(real(entry.data.ano) ? [{ rotulo: 'Ano', valor: entry.data.ano! }] : []),
+];
+---
+<Base
+  titulo={`${entry.data.titulo} — Portfólio`}
+  descricao={`${entry.data.titulo}: trabalho de acessibilidade audiovisual realizado pela Ouver.`}
+>
+  <nav class="migalhas" aria-label="Trilha de navegação">
+    <ol>
+      <li><a href="/portfolio">Portfólio</a></li>
+      <li><a href={`/portfolio/${categoria}`}>{label}</a></li>
+      <li aria-current="page">{entry.data.titulo}</li>
+    </ol>
+  </nav>
+
+  <article class="obra">
+    <header class="obra-cabecalho">
+      <p class="obra-categoria">{label}</p>
+      <h1>{entry.data.titulo}</h1>
+      {real(entry.data.imagemAlt) && <p class="obra-alt">{entry.data.imagemAlt}</p>}
+    </header>
+
+    {real(entry.data.imagem) && (
+      <figure class="obra-figura">
+        <img src={entry.data.imagem} alt={entry.data.imagemAlt || ''} />
+      </figure>
+    )}
+
+    <div class="obra-corpo">
+      <div class="obra-conteudo">
+        <Content />
+      </div>
+
+      <aside class="obra-ficha" aria-labelledby="ficha">
+        <h2 id="ficha">Ficha técnica</h2>
+        <dl>
+          {ficha.map((f) => (
+            <>
+              <dt>{f.rotulo}</dt>
+              <dd>{f.valor}</dd>
+            </>
+          ))}
+        </dl>
+        <p class="obra-ficha-nota">
+          Ficha em preenchimento. Para informações completas sobre esta obra,
+          <a href="/contato">fale com a gente</a>.
+        </p>
+      </aside>
+    </div>
+  </article>
+
+  <nav class="obra-nav" aria-label="Navegação entre trabalhos">
+    {anterior ? (
+      <a href={`/portfolio/${categoria}/${anterior.id.replace(/\.(md|mdx)$/, '')}`} rel="prev">
+        <span aria-hidden="true">←</span> {anterior.data.titulo}
+      </a>
+    ) : <span />}
+    {proximo ? (
+      <a href={`/portfolio/${categoria}/${proximo.id.replace(/\.(md|mdx)$/, '')}`} rel="next">
+        {proximo.data.titulo} <span aria-hidden="true">→</span>
+      </a>
+    ) : <span />}
+  </nav>
+
+  <section class="secao-conversao" aria-labelledby="conv-obra">
+    <h2 id="conv-obra">Quer uma obra acessível como esta?</h2>
+    <p>Conte sobre seu projeto e receba um orçamento claro, sem compromisso.</p>
+    <a href="/orcamento" class="botao botao-primario">Solicitar orçamento</a>
+  </section>
+</Base>

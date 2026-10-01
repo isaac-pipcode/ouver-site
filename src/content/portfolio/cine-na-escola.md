@@ -8,12 +8,11 @@ imagemAlt: "Cena em preto e branco: homem de terno sentado à mesa com telefone 
 ordem: 0
 imagem: "/images/portfolio/cine-na-escola.jpg"
 ---
-## Sinopse
 
-[Sinopse do projeto "Cine na Escola"]
+## Sobre a obra
 
-## Servicos realizados
+Integra o portfólio de acessibilidade audiovisual da Ouver.
 
-- [ ] Audiodescricao
-- [ ] Libras
-- [ ] Legendagem para Surdos e Ensurdecidos (LSE)
+## Ficha técnica
+
+Preenchendo — sinopse, ano, equipe e serviços aplicados a esta obra.

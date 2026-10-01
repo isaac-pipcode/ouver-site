@@ -8,12 +8,11 @@ imagemAlt: "Enxadas, vassoura de palha e ferramentas de madeira apoiadas contra 
 ordem: 0
 imagem: "/images/portfolio/instituto-marlin-azul.jpg"
 ---
-## Sinopse
 
-[Sinopse do projeto "Instituto Marlin Azul"]
+## Sobre a obra
 
-## Servicos realizados
+Integra o portfólio de acessibilidade audiovisual da Ouver.
 
-- [ ] Audiodescricao
-- [ ] Libras
-- [ ] Legendagem para Surdos e Ensurdecidos (LSE)
+## Ficha técnica
+
+Preenchendo — sinopse, ano, equipe e serviços aplicados a esta obra.
