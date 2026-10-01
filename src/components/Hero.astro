@@ -1,10 +1,33 @@
 ---
-// Hero — bloco de abertura com fundo escuro, título + subtítulo + CTAs.
+// Hero — bloco de abertura. Opcionalmente exibe uma mídia (vídeo do banner)
+// como "tela" no topo, seguida de título + subtítulo + CTAs.
 interface CTA { rotulo: string; href: string; primario?: boolean; }
-interface Props { titulo: string; subtitulo: string; ctas?: CTA[]; }
-const { titulo, subtitulo, ctas = [] } = Astro.props;
+interface Props {
+  titulo: string;
+  subtitulo: string;
+  ctas?: CTA[];
+  video?: string;      // ex.: /videos/banner-ouver.mp4
+  poster?: string;     // imagem estática exibida com prefers-reduced-motion
+  videoRotulo?: string; // descrição textual da mídia (para leitores de tela)
+}
+const { titulo, subtitulo, ctas = [], video, poster, videoRotulo } = Astro.props;
 ---
-<section class="hero">
+<section class={`hero${video ? ' hero--midia' : ''}`}>
+  {video && (
+    <div class="hero-midia">
+      <video
+        autoplay muted loop playsinline
+        preload="auto"
+        poster={poster}
+        aria-label={videoRotulo}
+        role="img"
+      >
+        <source src={video} type="video/mp4" />
+      </video>
+      {poster && <img class="hero-midia-poster" src={poster} alt={videoRotulo || ''} />}
+    </div>
+  )}
+
   <div class="hero-content">
     <h1>{titulo}</h1>
     <p>{subtitulo}</p>

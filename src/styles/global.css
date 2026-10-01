@@ -259,6 +259,24 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   max-width: 42rem; margin: 0 auto;
 }
 
+/* Hero com mídia (vídeo do banner) */
+.hero--midia { padding-top: var(--ouv-s7); }
+.hero-midia {
+  position: relative; z-index: 1;
+  max-width: var(--ouv-container); margin: 0 auto var(--ouv-s8);
+  border: 1px solid rgba(242, 237, 228, .18);
+  background: var(--ouv-cream);
+  overflow: hidden;
+}
+.hero-midia video,
+.hero-midia img { display: block; width: 100%; height: auto; }
+.hero-midia-poster { display: none; }
+/* Respeita quem prefere menos movimento: mostra só o quadro estático. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-midia video { display: none; }
+  .hero-midia-poster { display: block; }
+}
+
 .hero h1 {
   font-family: var(--ouv-font-display);
   font-size: var(--ouv-text-display);
