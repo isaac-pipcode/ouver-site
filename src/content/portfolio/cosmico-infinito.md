@@ -1,5 +1,5 @@
 ---
-titulo: "Cosmico Infinito"
+titulo: "Cósmico Infinito"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

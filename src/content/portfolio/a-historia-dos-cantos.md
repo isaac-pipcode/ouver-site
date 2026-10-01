@@ -1,5 +1,5 @@
 ---
-titulo: "A Historia dos Cantos"
+titulo: "A História dos Cantos"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

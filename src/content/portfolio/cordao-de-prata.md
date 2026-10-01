@@ -1,5 +1,5 @@
 ---
-titulo: "Cordao de Prata"
+titulo: "Cordão de Prata"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

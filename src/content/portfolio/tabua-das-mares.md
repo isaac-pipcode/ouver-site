@@ -1,5 +1,5 @@
 ---
-titulo: "Tabua das Mares"
+titulo: "Tábua das Marés"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

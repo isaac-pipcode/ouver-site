@@ -1,5 +1,5 @@
 ---
-titulo: "Escuta pra Ce Ve"
+titulo: "Escuta pra Cê Vê"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

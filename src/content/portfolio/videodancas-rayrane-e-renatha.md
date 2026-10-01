@@ -1,5 +1,5 @@
 ---
-titulo: "Videodancas Rayrane e Renatha"
+titulo: "Videodanças Rayrane e Renatha"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

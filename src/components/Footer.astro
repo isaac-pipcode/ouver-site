@@ -1,5 +1,5 @@
 ---
-// Footer — fundo escuro, grid com links, declaração de acessibilidade.
+// Footer — grid com navegação, contato e declaração de acessibilidade.
 const navegacao = [
   { rotulo: 'Quem somos', href: '/quem-somos' },
   { rotulo: 'Soluções', href: '/solucoes' },
@@ -20,6 +20,14 @@ const navegacao = [
         {navegacao.map((item) => (
           <li><a href={item.href}>{item.rotulo}</a></li>
         ))}
+      </ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="mailto:ouveracessibilidade@gmail.com">ouveracessibilidade@gmail.com</a></li>
+        <li><a href="https://wa.me/5521996279728">WhatsApp (RJ): (21) 99627-9728</a></li>
+        <li><a href="https://wa.me/5585982297179">WhatsApp (CE): (85) 98229-7179</a></li>
       </ul>
     </div>
   </div>

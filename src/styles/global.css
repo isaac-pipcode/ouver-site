@@ -334,6 +334,17 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   pointer-events: none;
 }
 
+/* ── Cabeçalho de seção ── */
+.section-heading {
+  max-width: var(--largura-texto);
+  margin: 0 auto var(--ouv-s6);
+  text-align: center;
+}
+.section-heading p {
+  margin: var(--ouv-s3) auto 0;
+  color: var(--ouv-text-mute);
+}
+
 /* ── Grade soluções e cards ── */
 .grade-solucoes {
   display: grid;
@@ -440,7 +451,7 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 }
 .site-footer-inner {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
   gap: var(--ouv-s7);
   padding: var(--ouv-s8) var(--ouv-gutter) var(--ouv-s7);
   max-width: var(--ouv-container); margin: 0 auto;

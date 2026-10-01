@@ -1,5 +1,5 @@
 ---
-titulo: "Abecedario Climatico"
+titulo: "Abecedário Climático"
 categoria: "educacionais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

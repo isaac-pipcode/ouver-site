@@ -27,6 +27,11 @@ function getCategoryLabel(cat: string): string {
   };
   return labels[cat] || cat;
 }
+
+// Esconde valores ainda não preenchidos (placeholders entre colchetes)
+function isPlaceholder(v?: string): boolean {
+  return !v || v.trim().startsWith('[');
+}
 ---
 <Base titulo="Portfólio" descricao="Conheça os projetos de acessibilidade audiovisual realizados pela Ouver — filmes, séries, exposições, materiais educativos e mais.">
   <Hero
@@ -52,13 +57,15 @@ function getCategoryLabel(cat: string): string {
               )}
               <div class="card-projeto-info">
                 <h3>{p.data.titulo}</h3>
-                {p.data.cliente && p.data.cliente !== '[Nome do cliente]' && (
+                {!isPlaceholder(p.data.cliente) && (
                   <p class="cliente">{p.data.cliente}</p>
                 )}
-                <p class="meta">
-                  <span>{p.data.tipo !== '[Serviço de acessibilidade]' ? p.data.tipo : ''}</span>
-                  {p.data.ano && p.data.ano !== '[Ano do projeto]' && <span>{p.data.ano}</span>}
-                </p>
+                {(!isPlaceholder(p.data.tipo) || !isPlaceholder(p.data.ano)) && (
+                  <p class="meta">
+                    {!isPlaceholder(p.data.tipo) && <span>{p.data.tipo}</span>}
+                    {!isPlaceholder(p.data.ano) && <span>{p.data.ano}</span>}
+                  </p>
+                )}
               </div>
             </article>
           ))}

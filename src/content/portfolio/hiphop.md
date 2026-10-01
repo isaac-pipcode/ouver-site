@@ -1,5 +1,5 @@
 ---
-titulo: "HipHop"
+titulo: "Hip-Hop"
 categoria: "educacionais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

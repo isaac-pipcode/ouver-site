@@ -1,5 +1,5 @@
 ---
-titulo: "A Memoria do Sonho"
+titulo: "A Memória do Sonho"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

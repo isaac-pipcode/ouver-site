@@ -1,5 +1,5 @@
 ---
-titulo: "Fazendo Arte como Nao Podia Fazer Quando Crianca"
+titulo: "Fazendo Arte como Não Podia Fazer Quando Criança"
 categoria: "exposicoes"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

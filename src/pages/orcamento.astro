@@ -2,31 +2,45 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 ---
-<Base titulo="Solicitar orçamento" descricao="Solicite um orçamento para seu projeto de acessibilidade audiovisual.">
+<Base titulo="Solicitar orçamento" descricao="Solicite um orçamento para seu projeto de acessibilidade audiovisual. Responderemos em até 2 dias úteis.">
   <Hero
     titulo="Solicitar orçamento"
-    subtitulo="Conte sobre seu projeto e receba um orçamento claro, sem compromisso. Responderemos em até [prazo] dias úteis."
+    subtitulo="Conte sobre seu projeto e receba um orçamento claro, sem compromisso. Responderemos em até 2 dias úteis."
   />
 
-  <form id="form-orcamento" action="[URL do backend]" method="POST" class="form-section" novalidate>
+  <form
+    id="form-orcamento"
+    action="https://formsubmit.co/ouveracessibilidade@gmail.com"
+    method="POST"
+    class="form-section"
+    novalidate
+  >
+    <!-- Configuração do FormSubmit: envia o orçamento por e-mail -->
+    <input type="hidden" name="_subject" value="Novo orçamento pelo site — Ouver Acessibilidade" />
+    <input type="hidden" name="_template" value="table" />
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_next" value="https://ouveracessibilidade.com.br/orcamento?enviado=1" />
+    <!-- Honeypot anti-spam (invisível para pessoas) -->
+    <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;" />
+
     <div class="campo">
       <label for="nome">Nome completo <span class="campo-required" aria-label="obrigatório">*</span></label>
-      <input type="text" id="nome" name="nome" required aria-required="true" />
+      <input type="text" id="nome" name="nome" required aria-required="true" autocomplete="name" />
     </div>
 
     <div class="campo">
       <label for="email">E-mail <span class="campo-required" aria-label="obrigatório">*</span></label>
-      <input type="email" id="email" name="email" required aria-required="true" />
+      <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" />
     </div>
 
     <div class="campo">
       <label for="telefone">Telefone / WhatsApp</label>
-      <input type="tel" id="telefone" name="telefone" />
+      <input type="tel" id="telefone" name="telefone" autocomplete="tel" />
     </div>
 
     <div class="campo">
       <label for="empresa">Empresa / Instituição</label>
-      <input type="text" id="empresa" name="empresa" />
+      <input type="text" id="empresa" name="empresa" autocomplete="organization" />
     </div>
 
     <fieldset class="campo" style="border:none;padding:0;">
@@ -83,9 +97,64 @@ import Hero from '../components/Hero.astro';
       </select>
     </div>
 
-    <div aria-live="polite" aria-atomic="true" style="min-height:1.5rem;font-weight:600;"></div>
+    <!-- Região de feedback (anunciada a leitores de tela) -->
+    <div id="form-status" role="status" aria-live="polite" aria-atomic="true" style="min-height:1.5rem;font-weight:600;"></div>
 
     <button type="submit" class="botao botao-primario">Enviar solicitação</button>
     <p class="campo-help"><span class="campo-required">*</span> Campos obrigatórios</p>
   </form>
 </Base>
+
+<script>
+  // Validação acessível: mensagens em texto, anunciadas via aria-live.
+  const form = document.getElementById('form-orcamento') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+
+  // Mostra confirmação quando o usuário volta do envio (?enviado=1)
+  if (status && new URLSearchParams(window.location.search).get('enviado') === '1') {
+    status.textContent = '✅ Solicitação enviada! Responderemos em até 2 dias úteis.';
+    status.style.color = 'var(--ouv-ok)';
+  }
+
+  if (form && status) {
+    const erros = (msg: string) => {
+      status.textContent = msg;
+      status.style.color = 'var(--ouv-warmth)';
+    };
+
+    form.addEventListener('submit', (e) => {
+      const nome = (document.getElementById('nome') as HTMLInputElement).value.trim();
+      const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+      const mensagem = (document.getElementById('mensagem') as HTMLTextAreaElement).value.trim();
+      const servicos = form.querySelectorAll<HTMLInputElement>('input[name="servico"]:checked').length;
+
+      if (!nome) {
+        e.preventDefault();
+        erros('Erro: preencha o campo "Nome completo".');
+        (document.getElementById('nome') as HTMLInputElement).focus();
+        return;
+      }
+      if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        e.preventDefault();
+        erros('Erro: informe um e-mail válido.');
+        (document.getElementById('email') as HTMLInputElement).focus();
+        return;
+      }
+      if (servicos === 0) {
+        e.preventDefault();
+        erros('Erro: selecione pelo menos um serviço.');
+        return;
+      }
+      if (!mensagem) {
+        e.preventDefault();
+        erros('Erro: descreva seu projeto.');
+        (document.getElementById('mensagem') as HTMLTextAreaElement).focus();
+        return;
+      }
+
+      // Válido: segue o envio. Feedback de progresso.
+      status.textContent = 'Enviando...';
+      status.style.color = 'var(--ouv-text-mute)';
+    });
+  }
+</script>

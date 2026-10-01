@@ -1,5 +1,5 @@
 ---
-titulo: "As Transas do Transido Transito"
+titulo: "As Transas do Transido Trânsito"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

@@ -1,5 +1,5 @@
 ---
-titulo: "Mostra Olhos dAgua"
+titulo: "Mostra Olhos d'Água"
 categoria: "mostras"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

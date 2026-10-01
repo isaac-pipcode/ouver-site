@@ -9,6 +9,8 @@ const macroareas = [
   { titulo: 'Produção Audiovisual', descricao: 'Produzimos vídeos que já nascem acessíveis — com acessibilidade pensada desde a concepção, não remendada no final.', href: '/solucoes/producao-audiovisual' },
   { titulo: 'Inovação', descricao: 'Formamos profissionais, pesquisamos e desenvolvemos tecnologia para fazer o campo da acessibilidade avançar.', href: '/solucoes/inovacao' },
 ];
+
+const portfolio = await getCollection('portfolio');
 ---
 <Base titulo="Acessibilidade audiovisual para que ninguém fique de fora" descricao="A Ouver torna filmes, séries, eventos e conteúdos acessíveis a pessoas com deficiência visual e auditiva.">
 
@@ -42,11 +44,11 @@ const macroareas = [
   <!-- Bloco 4 — Prova social -->
   <section class="secao secao-alt" aria-labelledby="prova-social">
     <div class="section-heading">
-      <h2 id="prova-social" class="mb-lg">Clientes e projetos</h2>
+      <h2 id="prova-social">Clientes e projetos</h2>
+      <p>Já tornamos acessíveis {portfolio.length} obras e projetos — filmes, séries, exposições, materiais educativos e mostras de cinema.</p>
     </div>
-    <div style="max-width: var(--largura-maxima); margin: 0 auto; text-align: center; padding: var(--espaco-xl); border: 2px dashed var(--cor-paper-escuro); border-radius: var(--raio-lg);">
-      <p style="margin: 0 auto;">[Logos de clientes e parceiros. 3–4 projetos em destaque com imagem. Números de impacto — obras acessibilizadas, horas de audiodescrição, festivais atendidos.]</p>
-      <p style="margin-top: var(--espaco-md);"><a href="/portfolio" class="botao botao-outline">Conheça nosso portfólio</a></p>
+    <div style="text-align:center;">
+      <a href="/portfolio" class="botao botao-outline">Conheça nosso portfólio</a>
     </div>
   </section>
 

@@ -1,5 +1,5 @@
 ---
-titulo: "Sol Inundacao"
+titulo: "Sol Inundação"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

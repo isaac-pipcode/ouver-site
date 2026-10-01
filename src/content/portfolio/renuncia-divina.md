@@ -1,5 +1,5 @@
 ---
-titulo: "Renuncia Divina"
+titulo: "Renúncia Divina"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

@@ -1,5 +1,5 @@
 ---
-titulo: "Ultima Geracao"
+titulo: "Última Geração"
 categoria: "audiovisuais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"

@@ -1,5 +1,5 @@
 ---
-titulo: "Labia"
+titulo: "Lábia"
 categoria: "exposicoes"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"
