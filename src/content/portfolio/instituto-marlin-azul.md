@@ -4,10 +4,10 @@ categoria: "educacionais"
 tipo: "[Servico de acessibilidade]"
 cliente: "[Nome do cliente]"
 ano: "[Ano]"
-imagemAlt: "[Descricao da imagem - Instituto Marlin Azul]"
+imagemAlt: "Enxadas, vassoura de palha e ferramentas de madeira apoiadas contra uma parede de taipa, sobre terra vermelha, em luz quente — cena do projeto Instituto Marlin Azul"
 ordem: 0
+imagem: "/images/portfolio/instituto-marlin-azul.jpg"
 ---
-
 ## Sinopse
 
 [Sinopse do projeto "Instituto Marlin Azul"]
