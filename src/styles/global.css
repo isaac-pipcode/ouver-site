@@ -251,23 +251,42 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   max-width: 42rem; margin: 0 auto;
 }
 
-/* Hero com mídia (vídeo do banner) — vídeo full-bleed no topo */
-.hero--midia { padding: 0 0 var(--ouv-s9); }
-.hero--midia .hero-content { padding-left: var(--ouv-gutter); padding-right: var(--ouv-gutter); }
+/* Hero com mídia (vídeo do banner) — full-bleed no topo, fundido ao fundo escuro */
+.hero--midia { padding: 0 0 var(--ouv-s8); }
+
 .hero-midia {
   position: relative; z-index: 1;
-  width: 100%; margin: 0 0 var(--ouv-s8);
+  width: 100%;
   background: var(--ouv-ink);
   overflow: hidden;
   line-height: 0;
 }
-.hero-midia video { display: block; width: 100%; height: auto; }
+.hero-midia video {
+  display: block; width: 100%; height: auto;
+  max-height: 62vh;
+  object-fit: cover; object-position: center;
+}
 /* O poster só aparece quando o vídeo não roda (ex.: prefers-reduced-motion). */
-.hero-midia img.hero-midia-poster { display: none; width: 100%; height: auto; }
+.hero-midia img.hero-midia-poster {
+  display: none; width: 100%; height: auto;
+  max-height: 62vh;
+  object-fit: cover; object-position: center;
+}
 @media (prefers-reduced-motion: reduce) {
   .hero-midia video { display: none; }
   .hero-midia img.hero-midia-poster { display: block; }
 }
+/* Funde a base do vídeo no fundo do hero: sem emenda visível. */
+.hero-midia::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 15%;
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, var(--ouv-ink) 82%);
+  pointer-events: none;
+}
+
+/* Texto do hero encostado na mídia, com respiro curto (evita botões "soltos") */
+.hero--midia .hero-content { padding: var(--ouv-s6) var(--ouv-gutter) 0; }
+.hero--midia .hero-content h1 { font-size: clamp(2.125rem, 4.4vw, 3.375rem); }
+.hero--midia .hero-content p { margin: var(--ouv-s4) auto var(--ouv-s5); }
 
 .hero h1 {
   font-family: var(--ouv-font-display);
@@ -702,6 +721,10 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   .hero { padding: var(--ouv-s7) var(--ouv-gutter); }
   .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
   .hero-ctas { flex-direction: column; align-items: center; }
+  /* no celular, o vídeo vira uma faixa com recorte central (logo maior) */
+  .hero--midia { padding-left: 0; padding-right: 0; }
+  .hero-midia video,
+  .hero-midia img.hero-midia-poster { height: 38vh; }
   .grade-solucoes, .grade-servicos, .grade-equipe, .grade-portfolio, .grade-categorias, .site-footer-inner {
     grid-template-columns: 1fr;
   }
