@@ -190,8 +190,9 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   list-style: none;
 }
 .nav-links a:not(.botao) {
-  font-family: var(--ouv-font-body); font-size: var(--ouv-text-sm);
-  font-weight: 400; color: var(--ouv-text);
+  font-family: var(--ouv-font-label); font-size: .8125rem;
+  font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ouv-text);
   text-decoration: none; padding: .5rem 0;
   border-bottom: 2px solid transparent;
 }
@@ -199,6 +200,33 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 .nav-links a[aria-current="page"] {
   border-bottom-color: var(--ouv-text); font-weight: 700;
 }
+
+/* ── Header sobre o hero escuro (home) ──
+   Nasce transparente sobre o canvas escuro e fica sólido depois de rolar. */
+.site-header--sobre {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: transparent;
+  border-bottom-color: transparent;
+  transition: background var(--ouv-dur) var(--ouv-ease),
+              border-color var(--ouv-dur) var(--ouv-ease);
+}
+.site-header--sobre .logo-escuro { display: none; }
+.site-header--sobre .nav-links a:not(.botao) { color: var(--ouv-cream); }
+.site-header--sobre .nav-links a:not(.botao):hover { color: var(--ouv-signal-light); }
+.site-header--sobre .nav-links a[aria-current="page"] { border-bottom-color: var(--ouv-cream); }
+.site-header--sobre .menu-toggle span { background: var(--ouv-cream); }
+
+.site-header--sobre.site-header--solido {
+  background: color-mix(in srgb, var(--ouv-bg) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom-color: var(--ouv-line);
+}
+.site-header--solido .logo-claro { display: none; }
+.site-header--solido .logo-escuro { display: block; }
+.site-header--solido .nav-links a:not(.botao) { color: var(--ouv-text); }
+.site-header--solido .nav-links a:not(.botao):hover { color: var(--ouv-link); }
+.site-header--solido .nav-links a[aria-current="page"] { border-bottom-color: var(--ouv-text); }
+.site-header--solido .menu-toggle span { background: var(--ouv-text); }
 
 /* Mobile */
 .menu-toggle {
@@ -251,42 +279,41 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   max-width: 42rem; margin: 0 auto;
 }
 
-/* Hero com mídia (vídeo do banner) — full-bleed no topo, fundido ao fundo escuro */
-.hero--midia { padding: 0 0 var(--ouv-s8); }
+/* Hero com mídia (vídeo do banner)
+   Fundo SÓLIDO igual à cor que o vídeo renderiza (#0B0E15) — sem degradê e sem
+   emenda; header transparente por cima forma um canvas escuro contínuo. */
+.hero--midia {
+  padding: 4.5rem 0 var(--ouv-s8); /* 4.5rem = altura do header fixo */
+  background: #0B0E15;
+}
 
 .hero-midia {
   position: relative; z-index: 1;
   width: 100%;
-  background: var(--ouv-ink);
+  background: #0B0E15;
   overflow: hidden;
   line-height: 0;
 }
 .hero-midia video {
   display: block; width: 100%; height: auto;
-  max-height: 62vh;
+  max-height: 58vh;
   object-fit: cover; object-position: center;
 }
 /* O poster só aparece quando o vídeo não roda (ex.: prefers-reduced-motion). */
 .hero-midia img.hero-midia-poster {
   display: none; width: 100%; height: auto;
-  max-height: 62vh;
+  max-height: 58vh;
   object-fit: cover; object-position: center;
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-midia video { display: none; }
   .hero-midia img.hero-midia-poster { display: block; }
 }
-/* Funde a base do vídeo no fundo do hero: sem emenda visível. */
-.hero-midia::after {
-  content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 15%;
-  background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, var(--ouv-ink) 82%);
-  pointer-events: none;
-}
 
-/* Texto do hero encostado na mídia, com respiro curto (evita botões "soltos") */
-.hero--midia .hero-content { padding: var(--ouv-s6) var(--ouv-gutter) 0; }
-.hero--midia .hero-content h1 { font-size: clamp(2.125rem, 4.4vw, 3.375rem); }
-.hero--midia .hero-content p { margin: var(--ouv-s4) auto var(--ouv-s5); }
+/* Composição: mídia → respiro → título → subtítulo → botões, sem vazios */
+.hero--midia .hero-content { padding: var(--ouv-s7) var(--ouv-gutter) 0; }
+.hero--midia .hero-content h1 { font-size: clamp(2.125rem, 4.2vw, 3.25rem); }
+.hero--midia .hero-content p { margin: var(--ouv-s4) auto var(--ouv-s6); }
 
 .hero h1 {
   font-family: var(--ouv-font-display);

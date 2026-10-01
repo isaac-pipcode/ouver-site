@@ -1,5 +1,10 @@
 ---
-// Header com símbolo Ouver (SVG) + wordmark + navegação.
+// Header com símbolo Ouver + navegação.
+// `sobreHero`: quando true (home), o header fica transparente sobre o hero escuro
+// e vira sólido ao rolar — criando um canvas escuro contínuo no topo.
+interface Props { sobreHero?: boolean; }
+const { sobreHero = false } = Astro.props;
+
 const navegacao = [
   { rotulo: 'Início', href: '/' },
   { rotulo: 'Quem somos', href: '/quem-somos' },
@@ -7,12 +12,18 @@ const navegacao = [
   { rotulo: 'Portfólio', href: '/portfolio' },
   { rotulo: 'Orçamento', href: '/orcamento' },
 ];
-const isHome = Astro.url.pathname === '/';
 ---
-<header class="site-header">
+<header class={`site-header${sobreHero ? ' site-header--sobre' : ''}`} data-sobre-hero={sobreHero ? 'true' : undefined}>
   <nav>
     <a href="/" class="logo" aria-label="Ouver Audiovisual e Acessibilidade, página inicial">
-      <img src="/ouver-simbolo.svg" alt="" width="48" height="48" aria-hidden="true" />
+      {sobreHero ? (
+        <>
+          <img class="logo-claro" src="/ouver-simbolo-negativo.svg" alt="" width="48" height="48" aria-hidden="true" />
+          <img class="logo-escuro" src="/ouver-simbolo.svg" alt="" width="48" height="48" aria-hidden="true" />
+        </>
+      ) : (
+        <img src="/ouver-simbolo.svg" alt="" width="48" height="48" aria-hidden="true" />
+      )}
     </a>
 
     <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
@@ -39,5 +50,13 @@ const isHome = Astro.url.pathname === '/';
       const expanded = nav.classList.toggle('active');
       toggle.setAttribute('aria-expanded', String(expanded));
     });
+  }
+
+  // Header sólido depois que sai do hero (só quando ele nasce transparente).
+  const header = document.querySelector('.site-header[data-sobre-hero="true"]');
+  if (header) {
+    const aoRolar = () => header.classList.toggle('site-header--solido', window.scrollY > 60);
+    aoRolar();
+    window.addEventListener('scroll', aoRolar, { passive: true });
   }
 </script>
