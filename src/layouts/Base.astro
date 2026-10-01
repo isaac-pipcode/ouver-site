@@ -16,7 +16,8 @@ const { titulo, descricao } = Astro.props;
     <title>{titulo} — Ouver Acessibilidade</title>
     <meta name="description" content={descricao} />
     <link rel="canonical" href={Astro.url.href} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-claro.svg" media="(prefers-color-scheme: dark)" />
   </head>
   <body>
     <a href="#conteudo" class="pular-conteudo">Pular para o conteúdo</a>

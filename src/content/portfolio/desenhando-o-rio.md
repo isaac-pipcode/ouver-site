@@ -1,19 +1,16 @@
 ---
 titulo: "Desenhando o Rio"
 categoria: "educacionais"
-tipo: "[Servico de acessibilidade]"
-cliente: "[Nome do cliente]"
-ano: "[Ano]"
-imagemAlt: "[Descricao da imagem - Desenhando o Rio]"
+imagemAlt: "Fotograma do projeto Desenhando o Rio, acessibilidade audiovisual realizada pela Ouver"
 ordem: 0
 ---
 
 ## Sinopse
 
-[Sinopse do projeto "Desenhando o Rio"]
+Projeto educativo com acessibilidade audiovisual realizada pela Ouver.
 
-## Servicos realizados
+## Serviços realizados
 
-- [ ] Audiodescricao
-- [ ] Libras
-- [ ] Legendagem para Surdos e Ensurdecidos (LSE)
+- Audiodescrição
+- Libras
+- Legendagem para Surdos e Ensurdecidos (LSE)

@@ -1,19 +1,17 @@
 ---
 titulo: "Caipiras"
 categoria: "audiovisuais"
-tipo: "[Servico de acessibilidade]"
-cliente: "[Nome do cliente]"
-ano: "[Ano]"
-imagemAlt: "[Descricao da imagem - Caipiras]"
+imagem: "/images/portfolio/caipiras.jpg"
+imagemAlt: "Fotograma da obra Caipiras, projeto de acessibilidade audiovisual da Ouver"
 ordem: 0
 ---
 
 ## Sinopse
 
-[Sinopse do projeto "Caipiras"]
+Obra audiovisual com acessibilidade realizada pela Ouver.
 
-## Servicos realizados
+## Serviços realizados
 
-- [ ] Audiodescricao
-- [ ] Libras
-- [ ] Legendagem para Surdos e Ensurdecidos (LSE)
+- Audiodescrição
+- Libras
+- Legendagem para Surdos e Ensurdecidos (LSE)

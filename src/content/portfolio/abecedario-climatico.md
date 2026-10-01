@@ -1,19 +1,17 @@
 ---
 titulo: "Abecedário Climático"
 categoria: "educacionais"
-tipo: "[Servico de acessibilidade]"
-cliente: "[Nome do cliente]"
-ano: "[Ano]"
-imagemAlt: "[Descricao da imagem - Abecedario Climatico]"
+imagem: "/images/portfolio/abecedario-climatico.jpg"
+imagemAlt: "Fotograma da série educativa Abecedário Climático, projeto de acessibilidade audiovisual da Ouver"
 ordem: 0
 ---
 
 ## Sinopse
 
-[Sinopse do projeto "Abecedario Climatico"]
+Série educativa sobre clima e meio ambiente, com acessibilidade audiovisual.
 
-## Servicos realizados
+## Serviços realizados
 
-- [ ] Audiodescricao
-- [ ] Libras
-- [ ] Legendagem para Surdos e Ensurdecidos (LSE)
+- Audiodescrição
+- Libras
+- Legendagem para Surdos e Ensurdecidos (LSE)

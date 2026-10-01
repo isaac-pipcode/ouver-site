@@ -178,7 +178,15 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   text-decoration: none; color: var(--ouv-text);
 }
 .logo:hover { color: var(--ouv-text); }
-.logo svg { height: 2.25rem; width: auto; }
+.logo img, .logo svg { height: 2.5rem; width: auto; }
+.logo-tag {
+  font-family: var(--ouv-font-label); font-weight: 500;
+  font-size: .6875rem; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--ouv-text-mute); padding-left: .9rem; margin-left: .9rem;
+  border-left: 1px solid var(--ouv-line); line-height: 1.1;
+  max-width: 11rem;
+}
+@media (max-width: 900px) { .logo-tag { display: none; } }
 .logo-word {
   font-family: var(--ouv-font-display); font-weight: 500;
   font-size: 1.75rem; letter-spacing: -.02em; line-height: 1;
@@ -467,6 +475,12 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 }
 .site-footer a:hover { color: var(--ouv-link); }
 .site-footer ul { list-style: none; display: grid; gap: var(--ouv-s3); }
+.footer-logo { height: 2.25rem; width: auto; margin-bottom: var(--ouv-s3); }
+.footer-tag {
+  font-family: var(--ouv-font-label); font-weight: 500;
+  font-size: .6875rem; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--ouv-text-mute); margin-bottom: var(--ouv-s3);
+}
 .footer-brand {
   font-family: var(--ouv-font-display); font-weight: 500;
   font-size: 1.25rem; color: var(--ouv-text);
