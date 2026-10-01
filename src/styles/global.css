@@ -264,8 +264,7 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 .hero-midia {
   position: relative; z-index: 1;
   max-width: var(--ouv-container); margin: 0 auto var(--ouv-s8);
-  border: 1px solid rgba(242, 237, 228, .18);
-  background: var(--ouv-cream);
+  background: var(--ouv-ink);
   overflow: hidden;
 }
 .hero-midia video,
