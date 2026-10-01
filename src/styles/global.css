@@ -558,6 +558,24 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 /* ── Utility ── */
 .text-center { text-align: center; }
 
+/* ── Banner em vídeo ── */
+.banner-video-figura {
+  margin: 0;
+  border: 1px solid var(--ouv-line);
+  background: var(--ouv-surface-raised);
+}
+.banner-video video {
+  display: block; width: 100%; height: auto;
+  background: var(--ouv-ink);
+}
+.banner-video-legenda {
+  font-family: var(--ouv-font-body);
+  font-size: var(--ouv-text-caption);
+  color: var(--ouv-text-mute);
+  padding: var(--ouv-s4) var(--ouv-s5);
+  border-top: 1px solid var(--ouv-line);
+}
+
 /* ── Responsivo ── */
 @media (max-width: 640px) {
   .hero { padding: var(--ouv-s7) var(--ouv-gutter); }

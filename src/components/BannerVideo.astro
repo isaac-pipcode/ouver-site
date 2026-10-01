@@ -1,0 +1,49 @@
+---
+// BannerVideo — bloco de vídeo em destaque na home, com requisitos de acessibilidade.
+// Props: src (arquivo em /public/videos), poster, titulo, descricao, legenda/track opcional.
+interface Props {
+  src: string;
+  poster?: string;
+  titulo: string;
+  descricao: string;
+  trackSrc?: string;      // .vtt com legendas/descrição
+  trackLabel?: string;
+  transcricaoHref?: string;
+  largura?: number;
+  altura?: number;
+}
+const {
+  src, poster, titulo, descricao,
+  trackSrc, trackLabel = 'Português', transcricaoHref,
+  largura = 1280, altura = 720,
+} = Astro.props;
+---
+<section class="secao banner-video" aria-labelledby="banner-video-titulo">
+  <div class="section-heading">
+    <h2 id="banner-video-titulo">{titulo}</h2>
+    <p>{descricao}</p>
+  </div>
+
+  <figure class="banner-video-figura">
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      poster={poster}
+      width={largura}
+      height={altura}
+      aria-describedby="banner-video-desc"
+    >
+      <source src={src} />
+      {trackSrc && <track kind="captions" src={trackSrc} srclang="pt" label={trackLabel} default />}
+      <p>
+        Seu navegador não reproduz vídeo HTML5.
+        <a href={src}>Baixe o vídeo ({titulo})</a>.
+      </p>
+    </video>
+    <figcaption id="banner-video-desc" class="banner-video-legenda">
+      {descricao}
+      {transcricaoHref && <> · <a href={transcricaoHref}>Transcrição e audiodescrição em texto</a></>}
+    </figcaption>
+  </figure>
+</section>
