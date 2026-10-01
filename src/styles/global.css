@@ -429,11 +429,13 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 }
 .card-solucao:hover { border-color: var(--ouv-signal); }
 
-.card-solucao-icon {
-  width: 48px; height: 48px;
-  display: flex; align-items: center; justify-content: center;
+.card-solucao-numero {
+  font-family: var(--ouv-font-mono);
+  font-size: .8125rem; letter-spacing: .14em;
+  color: var(--ouv-link);
   margin-bottom: var(--ouv-s5);
-  font-size: 1.5rem;
+  padding-bottom: var(--ouv-s4);
+  border-bottom: 1px solid var(--ouv-line);
 }
 
 .card-solucao h3 {

@@ -5,9 +5,9 @@ import CardSolucao from '../components/CardSolucao.astro';
 import { getCollection } from 'astro:content';
 
 const macroareas = [
-  { titulo: 'Tradução Audiovisual Acessível', descricao: 'Tornamos sua obra acessível: audiodescrição, Libras e legendagem para filmes, séries, quadrinhos, festivais e mostras.', href: '/solucoes/traducao-audiovisual-acessivel' },
-  { titulo: 'Produção Audiovisual', descricao: 'Produzimos vídeos que já nascem acessíveis — com acessibilidade pensada desde a concepção, não remendada no final.', href: '/solucoes/producao-audiovisual' },
-  { titulo: 'Inovação', descricao: 'Formamos profissionais, pesquisamos e desenvolvemos tecnologia para fazer o campo da acessibilidade avançar.', href: '/solucoes/inovacao' },
+  { numero: '01', titulo: 'Tradução Audiovisual Acessível', descricao: 'Tornamos sua obra acessível: audiodescrição, Libras e legendagem para filmes, séries, quadrinhos, festivais e mostras.', href: '/solucoes/traducao-audiovisual-acessivel' },
+  { numero: '02', titulo: 'Produção Audiovisual', descricao: 'Produzimos vídeos que já nascem acessíveis — com acessibilidade pensada desde a concepção, não remendada no final.', href: '/solucoes/producao-audiovisual' },
+  { numero: '03', titulo: 'Inovação', descricao: 'Formamos profissionais, pesquisamos e desenvolvemos tecnologia para fazer o campo da acessibilidade avançar.', href: '/solucoes/inovacao' },
 ];
 
 const portfolio = await getCollection('portfolio');
@@ -56,10 +56,14 @@ const portfolio = await getCollection('portfolio');
   </section>
 
   <!-- Bloco 5 — Quem somos (resumo) -->
-  <section class="secao-destaque" aria-labelledby="quem-somos-resumo">
-    <h2 id="quem-somos-resumo">Quem somos</h2>
-    <p>Somos uma equipe de especialistas em acessibilidade audiovisual, com formação técnica, experiência prática e vínculo com a pesquisa acadêmica do campo.</p>
-    <p style="margin-top: var(--espaco-lg);"><a href="/quem-somos" class="botao botao-outline">Conheça a equipe</a></p>
+  <section class="secao" aria-labelledby="quem-somos-resumo">
+    <div class="section-heading">
+      <h2 id="quem-somos-resumo">Quem somos</h2>
+      <p>Somos uma equipe de especialistas em acessibilidade audiovisual, com formação técnica, experiência prática e vínculo com a pesquisa acadêmica do campo.</p>
+    </div>
+    <div class="text-center">
+      <a href="/quem-somos" class="botao botao-outline">Conheça a equipe</a>
+    </div>
   </section>
 
   <!-- Bloco 6 — Conversão final -->

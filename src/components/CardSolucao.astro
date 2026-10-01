@@ -1,17 +1,12 @@
 ---
-// CardSolucao — cartão de macroárea com ícone, título, descrição e link.
-interface Props { titulo: string; descricao: string; href: string; icone?: string; }
-const { titulo, descricao, href, icone } = Astro.props;
-// Ícones como emoji — acessível com aria-hidden
-const icones: Record<string, string> = {
-  'Tradução Audiovisual Acessível': '🎬',
-  'Produção Audiovisual': '🎥',
-  'Inovação': '💡',
-};
+// CardSolucao — cartão de macroárea com numeração, título, descrição e link.
+// A numeração em mono substitui ícones: mais sóbrio e alinhado à marca.
+interface Props { titulo: string; descricao: string; href: string; numero?: string; }
+const { titulo, descricao, href, numero } = Astro.props;
 ---
 <article class="card-solucao">
-  <div class="card-solucao-icon" aria-hidden="true">{icones[titulo] || '◆'}</div>
+  {numero && <span class="card-solucao-numero" aria-hidden="true">{numero}</span>}
   <h3><a href={href}>{titulo}</a></h3>
   <p>{descricao}</p>
-  <a href={href} class="card-link" aria-label={`Saber mais sobre ${titulo}`}>Saber mais</a>
+  <a href={href} class="card-link">Saber mais<span class="visualmente-oculto"> sobre {titulo}</span></a>
 </article>
