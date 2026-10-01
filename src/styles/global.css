@@ -419,6 +419,25 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   padding: var(--ouv-s6) 0;
 }
 
+/* Bloco em duas colunas (prova social + quem somos) */
+.grade-dupla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ouv-s8);
+  max-width: var(--ouv-container);
+  margin: 0 auto;
+}
+.bloco-duplo { display: flex; flex-direction: column; align-items: flex-start; }
+.bloco-duplo h2 {
+  font-family: var(--ouv-font-display); font-weight: 500;
+  font-size: var(--ouv-text-h2); line-height: 1.05; letter-spacing: -.015em;
+  margin-bottom: var(--ouv-s4);
+}
+.bloco-duplo p { color: var(--ouv-text-mute); margin-bottom: var(--ouv-s5); }
+@media (max-width: 760px) {
+  .grade-dupla { grid-template-columns: 1fr; gap: var(--ouv-s7); }
+}
+
 .card-solucao {
   border: 1px solid var(--ouv-line);
   background: var(--ouv-surface-raised);

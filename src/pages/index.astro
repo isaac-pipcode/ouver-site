@@ -44,25 +44,19 @@ const portfolio = await getCollection('portfolio');
     <p>Acessibilidade não é um acréscimo: é o que garante que sua obra alcance todas as pessoas. É também, cada vez mais, uma exigência legal. Na Ouver, unimos as duas coisas — fazemos acessibilidade que cumpre a lei e que respeita a obra e o público.</p>
   </section>
 
-  <!-- Bloco 4 — Prova social -->
+  <!-- Bloco 4 — Prova social + Quem somos (duas colunas) -->
   <section class="secao secao-alt" aria-labelledby="prova-social">
-    <div class="section-heading">
-      <h2 id="prova-social">Clientes e projetos</h2>
-      <p>Já tornamos acessíveis {portfolio.length} obras e projetos — filmes, séries, exposições, materiais educativos e mostras de cinema.</p>
-    </div>
-    <div style="text-align:center;">
-      <a href="/portfolio" class="botao botao-outline">Conheça nosso portfólio</a>
-    </div>
-  </section>
-
-  <!-- Bloco 5 — Quem somos (resumo) -->
-  <section class="secao" aria-labelledby="quem-somos-resumo">
-    <div class="section-heading">
-      <h2 id="quem-somos-resumo">Quem somos</h2>
-      <p>Somos uma equipe de especialistas em acessibilidade audiovisual, com formação técnica, experiência prática e vínculo com a pesquisa acadêmica do campo.</p>
-    </div>
-    <div class="text-center">
-      <a href="/quem-somos" class="botao botao-outline">Conheça a equipe</a>
+    <div class="grade-dupla">
+      <div class="bloco-duplo">
+        <h2 id="prova-social">Clientes e projetos</h2>
+        <p>Já tornamos acessíveis {portfolio.length} obras e projetos — filmes, séries, exposições, materiais educativos e mostras de cinema.</p>
+        <a href="/portfolio" class="botao botao-outline">Conheça nosso portfólio</a>
+      </div>
+      <div class="bloco-duplo">
+        <h2 id="quem-somos-resumo">Quem somos</h2>
+        <p>Somos uma equipe de especialistas em acessibilidade audiovisual, com formação técnica, experiência prática e vínculo com a pesquisa acadêmica do campo.</p>
+        <a href="/quem-somos" class="botao botao-outline">Conheça a equipe</a>
+      </div>
     </div>
   </section>
 
