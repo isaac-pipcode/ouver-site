@@ -1,6 +1,7 @@
 ---
 // VLibras — tradutor de Libras (widget oficial do governo federal).
-// Fica no canto inferior direito; a barra de acessibilidade fica à esquerda.
+// O plugin centraliza o botão na vertical (50vh), o que sobrepõe o vídeo/logo na
+// home. Reposicionamos para o canto inferior direito após o carregamento.
 ---
 <div vw class="enabled">
   <div vw-access-button class="active"></div>
@@ -11,4 +12,21 @@
 <script is:inline src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script is:inline>
   new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+  // Move o botão do VLibras para o canto inferior direito (fora do vídeo/logo).
+  function reposicionarVlibras() {
+    const w = document.getElementById('vlibras-access-wrapper');
+    if (!w || !w.shadowRoot) return false;
+    const acc = w.shadowRoot.getElementById('vlibras-access');
+    if (!acc) return false;
+    acc.style.top = 'auto';
+    acc.style.bottom = '24px';
+    return true;
+  }
+  if (!reposicionarVlibras()) {
+    let tentativas = 0;
+    const iv = setInterval(() => {
+      if (reposicionarVlibras() || ++tentativas > 20) clearInterval(iv);
+    }, 250);
+  }
 </script>
