@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import Acessibilidade from '../components/Acessibilidade.astro';
+import Vlibras from '../components/Vlibras.astro';
 
 interface Props { titulo: string; descricao: string; sobreHero?: boolean; semFooter?: boolean; }
 const { titulo, descricao, sobreHero = false, semFooter = false } = Astro.props;
@@ -29,5 +30,6 @@ const { titulo, descricao, sobreHero = false, semFooter = false } = Astro.props;
     {!semFooter && <Footer />}
     <CookieBanner />
     <Acessibilidade />
+    <Vlibras />
   </body>
 </html>

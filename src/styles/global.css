@@ -253,7 +253,20 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
     z-index: 49;
   }
   .nav-links.active a { font-size: var(--ouv-text-h3); padding: 1rem 2rem; }
+
+  /* Menu aberto: texto e hambúrguer em tinta sobre o painel creme
+     (vence o estado "sobre hero", que deixava tudo em creme) */
+  .nav-links.active a:not(.botao),
+  .site-header--sobre .nav-links.active a:not(.botao) { color: var(--ouv-text); }
+  .nav-links.active a[aria-current="page"],
+  .site-header--sobre .nav-links.active a[aria-current="page"] { border-bottom-color: var(--ouv-text); }
+  .site-header--sobre .menu-toggle[aria-expanded="true"] span { background: var(--ouv-text); }
 }
+
+/* Hambúrguer vira "X" quando aberto */
+.menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── Hero ── */
 .hero {
@@ -807,7 +820,7 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 html.fonte-1 { font-size: 112.5%; }
 html.fonte-2 { font-size: 125%; }
 
-.acess { position: fixed; right: var(--ouv-s5); bottom: var(--ouv-s5); z-index: 70; }
+.acess { position: fixed; left: var(--ouv-s5); bottom: var(--ouv-s5); z-index: 70; }
 .acess-abrir {
   display: inline-flex; align-items: center; gap: .5rem;
   min-height: 3rem; padding: 0 1.25rem;
@@ -819,7 +832,7 @@ html.fonte-2 { font-size: 125%; }
 }
 .acess-abrir:hover { background: var(--ouv-signal); border-color: var(--ouv-signal); color: var(--ouv-cream); }
 .acess-painel {
-  position: absolute; right: 0; bottom: calc(100% + .75rem);
+  position: absolute; left: 0; bottom: calc(100% + .75rem);
   width: 17rem; padding: var(--ouv-s4);
   background: var(--ouv-surface-raised);
   border: 1px solid var(--ouv-line);
