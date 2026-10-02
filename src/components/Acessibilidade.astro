@@ -1,0 +1,70 @@
+---
+// Barra de acessibilidade flutuante: tamanho do texto e alto contraste,
+// com persistência em localStorage.
+---
+<div class="acess" role="region" aria-label="Opções de acessibilidade">
+  <button type="button" class="acess-abrir" id="acess-abrir" aria-expanded="false" aria-controls="acess-painel">
+    <span aria-hidden="true">Aa</span> Acessibilidade
+  </button>
+
+  <div class="acess-painel" id="acess-painel" hidden>
+    <p class="acess-titulo" id="acess-titulo-fonte">Tamanho do texto</p>
+    <div class="acess-botoes" role="group" aria-labelledby="acess-titulo-fonte">
+      <button type="button" data-fonte="-1" aria-label="Diminuir o texto">A−</button>
+      <button type="button" data-fonte="0" aria-label="Texto normal">A</button>
+      <button type="button" data-fonte="1" aria-label="Aumentar o texto">A+</button>
+    </div>
+    <button type="button" class="acess-contraste" id="acess-contraste" aria-pressed="false">
+      Alto contraste
+    </button>
+  </div>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const KEY = 'ouver-acessibilidade';
+
+  function ler() {
+    try {
+      const s = JSON.parse(localStorage.getItem(KEY) || '{}');
+      return { fonte: Number(s.fonte) || 0, contraste: !!s.contraste };
+    } catch {
+      return { fonte: 0, contraste: false };
+    }
+  }
+
+  function aplicar(estado) {
+    root.classList.remove('fonte-1', 'fonte-2');
+    if (estado.fonte >= 1) root.classList.add('fonte-' + Math.min(2, estado.fonte));
+    root.classList.toggle('alto-contraste', estado.contraste);
+    const c = document.getElementById('acess-contraste');
+    if (c) c.setAttribute('aria-pressed', String(estado.contraste));
+  }
+
+  const estado = ler();
+  aplicar(estado);
+
+  document.getElementById('acess-abrir')?.addEventListener('click', () => {
+    const painel = document.getElementById('acess-painel');
+    const aberto = painel.hidden = !painel.hidden;
+    document.getElementById('acess-abrir').setAttribute('aria-expanded', String(aberto));
+  });
+
+  document.querySelectorAll('[data-fonte]').forEach((b) => {
+    b.addEventListener('click', () => {
+      if (b.dataset.fonte === '0') {
+        estado.fonte = 0;
+      } else {
+        estado.fonte = Math.max(0, Math.min(2, estado.fonte + Number(b.dataset.fonte)));
+      }
+      localStorage.setItem(KEY, JSON.stringify(estado));
+      aplicar(estado);
+    });
+  });
+
+  document.getElementById('acess-contraste')?.addEventListener('click', () => {
+    estado.contraste = !estado.contraste;
+    localStorage.setItem(KEY, JSON.stringify(estado));
+    aplicar(estado);
+  });
+</script>

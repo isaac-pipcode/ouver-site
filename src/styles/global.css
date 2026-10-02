@@ -791,8 +791,87 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   .hero--midia { padding-left: 0; padding-right: 0; }
   .hero-midia video,
   .hero-midia img.hero-midia-poster { height: 38vh; }
+  /* home em tela única: vídeo ocupa mais espaço no celular */
+  .tela-video { padding: 4.5rem 0 var(--ouv-s6); }
+  .tela-video-central { width: 100%; }
+  .tela-video-central video,
+  .tela-video-poster { height: 54dvh; object-fit: cover; object-position: center; }
   .grade-solucoes, .grade-servicos, .grade-equipe, .grade-portfolio, .grade-categorias, .site-footer-inner {
     grid-template-columns: 1fr;
   }
   .footer-bottom { flex-direction: column; text-align: center; }
 }
+
+/* ── Acessibilidade ── */
+/* Tamanho de fonte (escala na raiz; tokens usam rem) */
+html.fonte-1 { font-size: 112.5%; }
+html.fonte-2 { font-size: 125%; }
+
+.acess { position: fixed; right: var(--ouv-s5); bottom: var(--ouv-s5); z-index: 70; }
+.acess-abrir {
+  display: inline-flex; align-items: center; gap: .5rem;
+  min-height: 3rem; padding: 0 1.25rem;
+  font-family: var(--ouv-font-label); font-weight: 700; font-size: .8125rem;
+  letter-spacing: .08em; text-transform: uppercase;
+  background: var(--ouv-ink); color: var(--ouv-cream);
+  border: 1.5px solid var(--ouv-cream); border-radius: var(--ouv-radius);
+  cursor: pointer;
+}
+.acess-abrir:hover { background: var(--ouv-signal); border-color: var(--ouv-signal); color: var(--ouv-cream); }
+.acess-painel {
+  position: absolute; right: 0; bottom: calc(100% + .75rem);
+  width: 17rem; padding: var(--ouv-s4);
+  background: var(--ouv-surface-raised);
+  border: 1px solid var(--ouv-line);
+  box-shadow: 0 10px 34px rgba(11, 15, 20, .2);
+  display: flex; flex-direction: column; gap: var(--ouv-s4);
+}
+.acess-painel[hidden] { display: none; }
+.acess-titulo {
+  font-family: var(--ouv-font-label); font-size: .75rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ouv-text-mute);
+}
+.acess-botoes { display: flex; gap: var(--ouv-s2); }
+.acess-botoes button {
+  flex: 1; min-height: 2.75rem; cursor: pointer;
+  font-family: var(--ouv-font-body); font-weight: 700; font-size: 1rem;
+  background: transparent; border: 1.5px solid var(--ouv-line);
+  color: var(--ouv-text); border-radius: var(--ouv-radius);
+}
+.acess-botoes button:hover { border-color: var(--ouv-text); }
+.acess-contraste {
+  min-height: 2.75rem; cursor: pointer;
+  font-family: var(--ouv-font-body); font-weight: 700; font-size: var(--ouv-text-sm);
+  background: transparent; border: 1.5px solid var(--ouv-line); color: var(--ouv-text);
+  border-radius: var(--ouv-radius);
+}
+.acess-contraste:hover { border-color: var(--ouv-text); }
+.acess-contraste[aria-pressed="true"] {
+  background: var(--ouv-ink); color: var(--ouv-cream); border-color: var(--ouv-ink);
+}
+
+/* Alto contraste: esquema preto/branco estrito */
+html.alto-contraste {
+  --ouv-cream: #ffffff;
+  --ouv-cream-2: #ffffff;
+  --ouv-surface: #ffffff;
+  --ouv-surface-raised: #ffffff;
+  --ouv-bg: #ffffff;
+  --ouv-text: #000000;
+  --ouv-text-mute: #000000;
+  --ouv-line: #000000;
+  --ouv-line-soft: #000000;
+  --ouv-link: #0000cc;
+  --ouv-link-hover: #0000cc;
+  --ouv-signal: #0000cc;
+  --ouv-signal-dark: #0000cc;
+  --ouv-focus: #0000cc;
+  --ouv-text-mute-escuro: #ffffff;
+}
+html.alto-contraste .hero,
+html.alto-contraste .secao-destaque,
+html.alto-contraste .secao-conversao,
+html.alto-contraste .tela-video { background: #000000; }
+html.alto-contraste .hero,
+html.alto-contraste .secao-destaque,
+html.alto-contraste .secao-conversao { color: #ffffff; }
