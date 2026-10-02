@@ -169,13 +169,15 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 }
 
 .site-header nav {
-  display: flex; align-items: center; justify-content: space-between;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
   gap: var(--ouv-s6); min-height: 4.5rem;
   max-width: var(--ouv-container); margin: 0 auto;
 }
 
 /* Logo */
 .logo {
+  position: absolute; left: 0;
   display: inline-flex; align-items: center; gap: .9rem;
   text-decoration: none; color: var(--ouv-text);
 }
@@ -242,6 +244,8 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 }
 
 @media (max-width: 760px) {
+  .site-header nav { justify-content: space-between; }
+  .logo { position: static; }
   .nav-links { display: none; }
   .menu-toggle { display: block; }
   .nav-links.active {
@@ -338,7 +342,7 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   display: flex; align-items: center; justify-content: center;
   padding: 4.5rem var(--ouv-gutter) var(--ouv-s8);
 }
-.tela-video-central { width: min(68rem, 100%); line-height: 0; }
+.tela-video-central { width: min(var(--ouv-container), 100%); line-height: 0; }
 .tela-video-central video { display: block; width: 100%; height: auto; }
 .tela-video-poster { display: none; width: 100%; height: auto; }
 @media (prefers-reduced-motion: reduce) {
