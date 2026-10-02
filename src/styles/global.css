@@ -317,6 +317,22 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 .hero--midia .hero-content h1 { font-size: clamp(2.125rem, 4.2vw, 3.25rem); }
 .hero--midia .hero-content p { margin: var(--ouv-s4) auto var(--ouv-s6); }
 
+/* ── Home em tela única (só o vídeo centralizado, sem rolagem) ── */
+.tela-video {
+  min-height: 100vh;
+  min-height: 100dvh; /* viewport dinâmico (mobile) */
+  background: #0B0E15;
+  display: flex; align-items: center; justify-content: center;
+  padding: 4.5rem var(--ouv-gutter) var(--ouv-s8);
+}
+.tela-video-central { width: min(68rem, 100%); line-height: 0; }
+.tela-video-central video { display: block; width: 100%; height: auto; }
+.tela-video-poster { display: none; width: 100%; height: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .tela-video-central video { display: none; }
+  .tela-video-poster { display: block; }
+}
+
 .hero h1 {
   font-family: var(--ouv-font-display);
   font-size: var(--ouv-text-display);
