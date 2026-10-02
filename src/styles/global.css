@@ -342,7 +342,7 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
   display: flex; align-items: center; justify-content: center;
   padding: 4.5rem var(--ouv-gutter) var(--ouv-s8);
 }
-.tela-video-central { width: min(var(--ouv-container), 100%); line-height: 0; }
+.tela-video-central { width: min(60rem, 100%); line-height: 0; }
 .tela-video-central video { display: block; width: 100%; height: auto; }
 .tela-video-poster { display: none; width: 100%; height: auto; }
 @media (prefers-reduced-motion: reduce) {
