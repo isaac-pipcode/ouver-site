@@ -105,6 +105,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Home em tela única: corpo escuro para que nenhuma faixa creme apareça
+   quando o 100dvh fica levemente menor que a área visível (comum em tablet). */
+body.tem-hero-escuro { background: #0b0e15; }
+
 ::selection { background: var(--ouv-signal-dark); color: var(--ouv-cream); }
 img { max-width: 100%; display: block; }
 
@@ -338,12 +342,13 @@ main { max-width: var(--ouv-container); margin: 0 auto; padding: 0; }
 .tela-video {
   min-height: 100vh;
   min-height: 100dvh; /* viewport dinâmico (mobile) */
+  min-height: 100lvh; /* viewport "large" (UI oculta) — evita faixa branca embaixo */
   background: #0B0E15;
   display: flex; align-items: center; justify-content: center;
   padding: 4.5rem var(--ouv-gutter) var(--ouv-s8);
 }
 .tela-video-central { width: min(60rem, 100%); line-height: 0; }
-.tela-video-central video { display: block; width: 100%; height: auto; }
+.tela-video-central video { display: block; width: 100%; height: auto; background: #0b0e15; }
 .tela-video-poster { display: none; width: 100%; height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .tela-video-central video { display: none; }
